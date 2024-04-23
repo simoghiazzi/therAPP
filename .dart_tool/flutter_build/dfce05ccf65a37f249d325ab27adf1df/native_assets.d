@@ -1,0 +1,1 @@
+ /Users/simoneghiazzi/Physio/physio_app/.dart_tool/flutter_build/dfce05ccf65a37f249d325ab27adf1df/native_assets.yaml: 
