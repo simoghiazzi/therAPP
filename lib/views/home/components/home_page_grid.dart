@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:therAPP/Router/app_router_delegate.dart';
-import 'package:therAPP/views/home/components/dash_card.dart';
+import 'package:therAPP/views/Home/components/dash_card.dart';
 import 'package:provider/provider.dart';
 
 /// Grid of the [BaseUserHomePageScreen].
@@ -29,38 +29,20 @@ class HomePageGrid extends StatelessWidget {
                   // Expert Chats
                   DashCard(
                       row: 1,
-                      imagePath: "assets/icons/logo.png",
-                      text: "Experts\nchats",
+                      imagePath: "assets/icons/add_patient.png",
+                      text: "Nuovo\npaziente",
                       onTap: () =>
                           {} //routerDelegate.pushPage(name: ChatListScreen.route, arguments: ExpertChatListBody()),
                       ),
                   // Anonymous Chats
                   DashCard(
                       row: 1,
-                      imagePath: "assets/icons/logo.png",
-                      text: "Anonymous\nchats",
+                      imagePath: "assets/icons/list.png",
+                      text: "Lista\npazienti",
                       onTap: () =>
                           {} //routerDelegate.pushPage(name: ChatListScreen.route, arguments: AnonymousChatListBody()),
                       ),
                 ]),
-                TableRow(children: <Widget>[
-                  // Map
-                  DashCard(
-                      row: 2,
-                      imagePath: "assets/icons/logo.png",
-                      text: "Find an\nexpert",
-                      onTap: () =>
-                          {} //routerDelegate.pushPage(name: MapScreen.route),
-                      ),
-                  // Reports
-                  DashCard(
-                      row: 2,
-                      imagePath: "assets/icons/logo.png",
-                      text: "Anonymous\nreports",
-                      onTap: () =>
-                          {} //routerDelegate.pushPage(name: CreateReportScreen.route),
-                      ),
-                ])
               ],
             ),
           )),

@@ -1,4 +1,4 @@
-import 'package:therAPP/views/home/home_screen.dart';
+import 'package:therAPP/views/Home/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/services.dart';

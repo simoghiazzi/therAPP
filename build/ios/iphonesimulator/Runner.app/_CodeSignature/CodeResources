@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		8HpvVvsIvHOR02ChgXdf89K8LYE=
+		jnIARKbNKTjAfa/e/pcXrBTgyKs=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,15 +54,15 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		HOSn7DisPh/Xsu+0sP/BKrLPV8c=
+		rg250dG65tYVPC+Ia/RgQXromaA=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
-		8pXFPf8l43rtX6TX1kumQt8XSNc=
+		+EWYUL9Nzkmy2x1rvP8X11tAZqI=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		/dP1WQ8xqlmBfr8gSeE7uvDYr4Q=
+		2VtwYKvSZcQDnyAeDqLGtEmx/Z8=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
@@ -76,6 +76,10 @@
 		<data>
 		b+cnjSmXPohR8iGF+Xna1qMfCKc=
 		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/icons/add_patient.png</key>
+		<data>
+		pKHsWYLM/0HgxRR3zViDeESkuao=
+		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/icons/anonymous.png</key>
 		<data>
 		7Qr5l7lebb2nkTzxvjDnaBonqxg=
@@ -87,6 +91,10 @@
 		<key>Frameworks/App.framework/flutter_assets/assets/icons/google.png</key>
 		<data>
 		SK+PbmTU7AH5Quv1aWAFnIWK1iY=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/icons/list.png</key>
+		<data>
+		DdwLpP759CeS9+XRl+S71hurLZ8=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/icons/logo.png</key>
 		<data>
@@ -158,7 +166,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		9kxn8hwPs3/wJFna8H+Wc6RALa8=
+		HvLvR65tUrVH9sr8XDBSQ1dmw10=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -365,7 +373,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZCD/VtsfntlEFtE0dzQK/Is0Cima/VJAy4oV9RVZhaY=
+			PlyN1TWv2gWF/YCNvlbeAIFv4eLJC1e9084M6JY5E6k=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -379,21 +387,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5CjXdFgWkgT3mEiJ0B9ZnYYutLTd5gMi85IxpPbHk0s=
+			wFuZGiuiIQJUAsk/GBrIWF2cr/zAcXb0EE/QqrenQWw=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7Q5oHOKQsxsnGgIz140IeX+LvgMJmPqgoDbpehSN8Ac=
+			pUzOUEroDVlsr5rQZfv2rnID6M5UAc6IEKDiB6ynlM8=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rLohH5vsTzcsc4owGVRvYwVEG9sg1Hsx4qr5ZnzgRKI=
+			8fwMy7Tga0nHVDZHxiZidLKIYp7+L6b7oE1QXrWMrrc=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
@@ -417,6 +425,13 @@
 			Fko59FyfjslzRXE8nTIrX87LcBfUnwIGCDLvgiQGA1E=
 			</data>
 		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/icons/add_patient.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			eCu8grZJhfxyIlGuMSP5rbFLCLK6Z10/qjx7DxfLGUA=
+			</data>
+		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/icons/anonymous.png</key>
 		<dict>
 			<key>hash2</key>
@@ -436,6 +451,13 @@
 			<key>hash2</key>
 			<data>
 			pPZ8F7wVIPS40WKeGRA18MSi2i4xEPL5eALlYfWEfIs=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/icons/list.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Ny8l59FHAk9QzS3aPEyqoVGL0eCnb9lfBF9ef9S67dc=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/icons/logo.png</key>
@@ -561,7 +583,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EWmt4wI+yzXUhbtTPHclI+F1wKyfHBO5suITr6lm/A0=
+			JvdcScQjxPadOab0y+z2EfTBe/ulZba+cWRNzOSdP90=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>

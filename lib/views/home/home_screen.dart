@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:therAPP/Router/app_router_delegate.dart';
 import 'package:therAPP/Views/Utils/constants.dart';
-import 'package:therAPP/views/home/components/home_body.dart';
+import 'package:therAPP/views/Home/components/home_body.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 

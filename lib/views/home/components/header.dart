@@ -18,7 +18,7 @@ class Header extends StatelessWidget {
         child: SafeArea(
           child: Container(
             color: kPrimaryColor,
-            height: 9.5.h,
+            height: 8.h,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,

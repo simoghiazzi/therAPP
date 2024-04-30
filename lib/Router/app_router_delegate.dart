@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:therAPP/views/home/home_screen.dart';
+import 'package:therAPP/views/Home/home_screen.dart';
 
 class AppRouterDelegate extends RouterDelegate<List<RouteSettings>>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin<List<RouteSettings>> {

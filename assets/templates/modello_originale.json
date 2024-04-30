@@ -1,0 +1,358 @@
+{
+  "nome": "Modello originale",
+  "Anagrafica": [
+    {
+      "name": "Nome",
+      "type": 1
+    },
+    {
+      "name": "Cognome",
+      "type": 1
+    }
+  ],
+  "Anamnesi prossima": [
+    {
+      "name": "Sito",
+      "type": 2,
+      "values": [
+        "Capo",
+        "Cervicale",
+        "Dorsale",
+        "Lombare",
+        "Bacino",
+        "Femore",
+        "Tibia-perone",
+        "Piede",
+        "Omero",
+        "Radio-ulna",
+        "Piede",
+        "Petto",
+        "Addome",
+        "Mano",
+        "Altro"
+      ]
+    },
+    {
+      "name": "Insorgenza",
+      "type": 2,
+      "values": [
+        "Giorno/i",
+        "Settimana/i",
+        "Un mese",
+        "3 Mesi",
+        "6 Mesi",
+        "Altro"
+      ]
+    },
+    {
+      "name": "Caratteristiche",
+      "type": 2,
+      "values": [
+        "Urente",
+        "Scossa",
+        "Localizzato",
+        "Mal localizzato",
+        "Puntiforme",
+        "Ad area"
+      ]
+    },
+    {
+      "name": "Irradiazione",
+      "type": 2,
+      "values": ["Si", "No"]
+    },
+    {
+      "name": "Timing",
+      "type": 2,
+      "values": ["Mattina", "Sera", "Notte", "Costante", "Incostante"]
+    },
+    {
+      "name": "Fattori allevianti",
+      "type": 3,
+      "values": [
+        "Riposo",
+        "Postura",
+        "Farmaco",
+        "Trattamento",
+        "Attività",
+        "Clima",
+        "Temperatura",
+        "Altro"
+      ]
+    },
+    {
+      "name": "Fattori aggravanti",
+      "type": 3,
+      "values": [
+        "Riposo",
+        "Postura",
+        "Stress",
+        "Trattamento",
+        "Attività",
+        "Clima",
+        "Temperatura",
+        "Altro"
+      ]
+    },
+    {
+      "name": "Severità",
+      "type": 4,
+      "values": [1, 10]
+    }
+  ],
+  "Anamnesi remota": [
+    {
+      "name": "Trauma",
+      "type": 2,
+      "values": [
+        "Osseo",
+        "Articolare",
+        "Cranico",
+        "Muscolare",
+        "Nervoso",
+        "Whiplash",
+        "Altro"
+      ]
+    },
+    {
+      "name": "Operazione",
+      "type": 2,
+      "values": [
+        "Ortopedica",
+        "Cardio-vascolare",
+        "Neurologica",
+        "Viscerale",
+        "Parto",
+        "Altro"
+      ]
+    },
+    {
+      "name": "Altro",
+      "type": 2,
+      "values": ["Neoplasie"]
+    }
+  ],
+  "Anamnesi dei sistemi": [
+    {
+      "name": "Cardio",
+      "type": 3,
+      "values": [
+        "Infarto",
+        "P. Infiammatorie",
+        "Valvulopatie",
+        "Insufficienza",
+        "Anginose",
+        "Chirurgie",
+        "Altro"
+      ]
+    },
+    {
+      "name": "Pneumo",
+      "type": 3,
+      "values": ["BPCO", "Asma", "OSAS", "Insufficienza", "Embolia", "Altro"]
+    },
+    {
+      "name": "Gastro",
+      "type": 3,
+      "values": [
+        "IBS",
+        "Gastrite",
+        "Reflusso",
+        "Incontinenza",
+        "Stipsi",
+        "Colecistectomia",
+        "Epatite",
+        "Appendicite",
+        "Chron",
+        "Altro"
+      ]
+    },
+    {
+      "name": "Genito",
+      "type": 3,
+      "values": [
+        "Cistite",
+        "Disturbi ciclo-mestruali",
+        "Endometriosi",
+        "Disturbi renali",
+        "Incontinenza",
+        "Altro"
+      ]
+    },
+    {
+      "name": "Vista",
+      "type": 3,
+      "values": [
+        "Deficit simmetrico",
+        "Deficit asimmetrico",
+        "Occhiali",
+        "Altro"
+      ]
+    },
+    {
+      "name": "Bocca",
+      "type": 3,
+      "values": ["Apparecchio", "ATM", "Bruxismo", "Altro"]
+    },
+    {
+      "name": "Sonno",
+      "type": 2,
+      "values": ["7+", "6 o 5", "5-"]
+    }
+  ],
+  "Criticità": [
+    {
+      "name": "Red Flags",
+      "type": 3,
+      "values": [
+        "Storia di cancro",
+        "Immunosoppressione",
+        "Dolore notturno",
+        "Over 50",
+        "Utilizzo prolungato corticosteroidi",
+        "Deficit neurologico severo e progressivo",
+        "Dolore toracico",
+        "Perdita di peso immotivata",
+        "Anestesia a sella",
+        "Disturbi sfinterici",
+        "Dolore associato a sintomi costituzionali",
+        "Febbre",
+        "Disturbi visivi",
+        "Atassia",
+        "Alterazione della deambulazione"
+      ]
+    },
+    {
+      "name": "Psicologo",
+      "type": 2,
+      "values": ["Si", "No"]
+    }
+  ],
+  "Osservazione": [
+    {
+      "name": "Red Flags",
+      "type": 3,
+      "values": [
+        "Storia di cancro",
+        "Immunosoppressione",
+        "Dolore notturno",
+        "Over 50",
+        "Utilizzo prolungato corticosteroidi",
+        "Deficit neurologico severo e progressivo",
+        "Dolore toracico",
+        "Perdita di peso immotivata",
+        "Anestesia a sella",
+        "Disturbi sfinterici",
+        "Dolore associato a sintomi costituzionali",
+        "Febbre",
+        "Disturbi visivi",
+        "Atassia",
+        "Alterazione della deambulazione"
+      ]
+    },
+    {
+      "name": "Psicologo",
+      "type": 2,
+      "values": ["Si", "No"]
+    }
+  ],
+  "Esaminazione": [
+    {
+      "name": "Mobilità Colonna",
+      "type": 5,
+      "values": [
+        { "name": "Flessione", "slides": ["Si", "No"] },
+        { "name": "Estensione", "slides": ["Si", "No"] },
+        { "name": "Sidebendind dx", "slides": ["Si", "No"] },
+        { "name": "Sidebendind sx", "slides": ["Si", "No"] }
+      ]
+    },
+    {
+      "name": "Mobilità",
+      "type": 5,
+      "values": [
+        { "name": "Oculare", "slides": ["Si", "No"] },
+        { "name": "Vestibolare", "slides": ["Si", "No"] },
+        { "name": "Overhead squat", "slides": ["Si", "No"] },
+        { "name": "Test specifico", "slides": ["Si", "No"] },
+        { "name": "Respirazione", "slides": ["Si", "No"] }
+      ]
+    },
+    {
+      "name": "Gestione carico",
+      "type": 5,
+      "values": [
+        { "name": "OA/OC", "slides": ["Si", "No"] },
+        { "name": "Pulsion test", "slides": ["Si", "No"] },
+        { "name": "Marcia OC", "slides": ["DX", "SX"] },
+        { "name": "Dita piedi", "slides": ["Ant", "Post"] },
+        { "name": "Monopodalica dx", "slides": ["Si", "No"] },
+        { "name": "Monopodalica sx", "slides": ["Si", "No"] }
+      ]
+    },
+    {
+      "name": "Cammino",
+      "type": 2,
+      "values": [
+        "Capo",
+        "Cervicale",
+        "Dorsale",
+        "Lombare",
+        "Bacino",
+        "Femore",
+        "Tibia-perone",
+        "Piede",
+        "Omero",
+        "Radio-ulna",
+        "Piede",
+        "Petto",
+        "Addome",
+        "Mano",
+        "Altro"
+      ]
+    },
+    {
+      "name": "Esame Neurologico",
+      "type": 2,
+      "values": [
+        "Capo",
+        "Cervicale",
+        "Dorsale",
+        "Lombare",
+        "Bacino",
+        "Femore",
+        "Tibia-perone",
+        "Piede",
+        "Omero",
+        "Radio-ulna",
+        "Piede",
+        "Petto",
+        "Addome",
+        "Mano",
+        "Altro"
+      ]
+    },
+    {
+      "name": "Esame Neurologico",
+      "type": 5,
+      "values": [{ "name": "Sommazione", "slides": ["Si", "No"] }]
+    },
+    {
+      "name": "Supino",
+      "type": 5,
+      "values": [
+        { "name": "Articolarità caviglie", "slides": ["Si", "No"] },
+        { "name": "Rotazione anca dx", "slides": ["Si", "No"] },
+        { "name": "Rotazione anca sx", "slides": ["Si", "No"] },
+        { "name": "FABER dx", "slides": ["Si", "No"] },
+        { "name": "FABER sx", "slides": ["Si", "No"] },
+        { "name": "Overhead passivo", "slides": ["Si", "No"] },
+        { "name": "Candelabro", "slides": ["Si", "No"] },
+        { "name": "Articolarità cervicale", "slides": ["Si", "No"] },
+        { "name": "Articolarità cervicale", "slides": ["Si", "No"] },
+        { "name": "Punti repere", "slides": ["Si", "No"] },
+        { "name": "Scaleni", "slides": ["Si", "No"] }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:therAPP/views/home/components/background.dart';
-import 'package:therAPP/views/home/components/header.dart';
-import 'package:therAPP/views/home/components/home_page_grid.dart';
+import 'package:therAPP/views/Home/components/background.dart';
+import 'package:therAPP/views/Home/components/header.dart';
+import 'package:therAPP/views/Home/components/home_page_grid.dart';
 
 class HomePageBody extends StatelessWidget {
   const HomePageBody({super.key});
