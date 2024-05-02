@@ -57,19 +57,23 @@ class _HomePageScreenState extends State<HomePageScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: IndexedStack(index: _currentIndex, children: _pages),
-      bottomNavigationBar: BottomNavigationBar(
-        iconSize: 3.5.h,
-        selectedFontSize: 11.sp,
-        currentIndex: _currentIndex,
-        showSelectedLabels: true,
-        showUnselectedLabels: false,
-        unselectedItemColor: kPrimaryColor,
-        selectedItemColor: kPrimaryMediumColor,
-        onTap: _onBottomNavTapped,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Settings")
-        ],
+      bottomNavigationBar: SizedBox(
+        height: 8.h, // Adjust this value according to your preference
+        child: BottomNavigationBar(
+          iconSize: 2.5.h,
+          selectedFontSize: 6.sp,
+          currentIndex: _currentIndex,
+          showSelectedLabels: true,
+          showUnselectedLabels: false,
+          unselectedItemColor: kPrimaryColor,
+          selectedItemColor: kPrimaryMediumColor,
+          onTap: _onBottomNavTapped,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings), label: "Settings")
+          ],
+        ),
       ),
     );
   }

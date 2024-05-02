@@ -18,7 +18,7 @@ class Header extends StatelessWidget {
         child: SafeArea(
           child: Container(
             color: kPrimaryColor,
-            height: 8.h,
+            height: 7.h,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -31,7 +31,7 @@ class Header extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 30.sp,
+                        fontSize: 15.sp,
                         fontFamily: "Gabriola"),
                   ),
                 ),
