@@ -21,16 +21,6 @@ class Background extends StatelessWidget {
           // Top Left Image
           Positioned(
               child: Image.asset("assets/images/main_top.png", scale: 2)),
-          // Centered Logo
-          Center(
-            child: Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Opacity(
-                    opacity: 0.2,
-                    child: Container(
-                        child:
-                            Image.asset("assets/icons/logo.png", scale: 11)))),
-          ),
           // Bottom Right Image
           Positioned(
               bottom: 0,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:therAPP/Router/app_router_delegate.dart';
 import 'package:therAPP/views/Home/components/dash_card.dart';
 import 'package:provider/provider.dart';
+import 'package:therAPP/views/NewPatient/new_patient_screen.dart';
 
 /// Grid of the [BaseUserHomePageScreen].
 ///
@@ -20,20 +21,20 @@ class HomePageGrid extends StatelessWidget {
 
     return Center(
       child: Container(
-          constraints: BoxConstraints(maxWidth: 750),
-          padding: EdgeInsets.only(left: 5, right: 5),
+          constraints: const BoxConstraints(maxWidth: 750),
+          padding: const EdgeInsets.only(left: 5, right: 5),
           child: SingleChildScrollView(
             child: Table(
               children: [
                 TableRow(children: <Widget>[
                   // Expert Chats
                   DashCard(
-                      row: 1,
-                      imagePath: "assets/icons/add_patient.png",
-                      text: "Nuovo\npaziente",
-                      onTap: () =>
-                          {} //routerDelegate.pushPage(name: ChatListScreen.route, arguments: ExpertChatListBody()),
-                      ),
+                    row: 1,
+                    imagePath: "assets/icons/add_patient.png",
+                    text: "Nuovo\npaziente",
+                    onTap: () =>
+                        routerDelegate.pushPage(name: NewPatientScreen.route),
+                  ),
                   // Anonymous Chats
                   DashCard(
                       row: 1,

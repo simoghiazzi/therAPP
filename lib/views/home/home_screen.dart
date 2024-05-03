@@ -25,13 +25,13 @@ class HomePageScreen extends StatefulWidget {
   /// When it is initialized, it loads all the stream of the view models of the [BaseUser].
   ///
   /// It also takes the [pageIndex] that indicates which pages of the navigation bar it has to show.
-  HomePageScreen({Key? key, this.pageIndex}) : super(key: key);
+  const HomePageScreen({super.key, this.pageIndex});
 
   @override
-  _HomePageScreenState createState() => _HomePageScreenState();
+  HomePageScreenState createState() => HomePageScreenState();
 }
 
-class _HomePageScreenState extends State<HomePageScreen> {
+class HomePageScreenState extends State<HomePageScreen> {
   // Router Delegate
   late AppRouterDelegate routerDelegate;
 

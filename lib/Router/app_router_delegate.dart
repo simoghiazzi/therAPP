@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:therAPP/views/Home/home_screen.dart';
+import 'package:therAPP/views/NewPatient/new_patient_screen.dart';
 
 class AppRouterDelegate extends RouterDelegate<List<RouteSettings>>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin<List<RouteSettings>> {
@@ -48,6 +49,9 @@ class AppRouterDelegate extends RouterDelegate<List<RouteSettings>>
   MaterialPage _createPage(RouteSettings routeSettings) {
     late Widget child;
     switch (routeSettings.name) {
+      case NewPatientScreen.route:
+        child = NewPatientScreen();
+        break;
       case HomePageScreen.route:
         child = HomePageScreen(pageIndex: routeSettings.arguments as int?);
         break;
