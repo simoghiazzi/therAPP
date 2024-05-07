@@ -44,7 +44,7 @@ class TopBar extends StatelessWidget {
       child: SafeArea(
         child: Container(
           decoration: const BoxDecoration(color: kPrimaryColor),
-          height: 7.h,
+          height: 7.8.h,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -68,7 +68,7 @@ class TopBar extends StatelessWidget {
                 child: Text(
                   text,
                   style: TextStyle(
-                      fontSize: textSize ?? 20.sp,
+                      fontSize: textSize ?? 15.sp,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                   maxLines: 1,

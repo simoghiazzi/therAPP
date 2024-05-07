@@ -15,6 +15,7 @@ class NewPatientScreen extends StatefulWidget {
 class NewPatientScreenState extends State<NewPatientScreen> {
   // Variable to store the list of JSON items
   List<Map<String, dynamic>> templates = [];
+  String chosenFile = "";
 
   @override
   void initState() {
@@ -22,6 +23,7 @@ class NewPatientScreenState extends State<NewPatientScreen> {
     loadJsonData('assets/templates/templates_list.json').then((value) {
       setState(() {
         templates = value;
+        chosenFile = value.first["file"];
       });
     });
   }

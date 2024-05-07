@@ -4,8 +4,10 @@ import 'package:therAPP/views/Utils/top_bar.dart';
 
 class NewPatientBody extends StatefulWidget {
   final bool showBack;
+  final String barText;
 
-  const NewPatientBody({super.key, this.showBack = true});
+  const NewPatientBody(
+      {super.key, this.showBack = true, this.barText = "Seleziona modello"});
 
   @override
   NewPatientBodyState createState() => NewPatientBodyState();
@@ -25,7 +27,7 @@ class NewPatientBodyState extends State<NewPatientBody> {
     return Column(
       children: [
         TopBar(
-          text: "Nuova visita",
+          text: widget.barText,
           back: widget.showBack,
         ),
         Expanded(

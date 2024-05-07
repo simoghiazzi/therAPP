@@ -40,6 +40,11 @@ class AppRouterDelegate extends RouterDelegate<List<RouteSettings>>
     if (_pages.length <= 1 || _pages.last.name == HomePageScreen.route) {
       return Future.value(false);
     }
+
+    if (!hasDialog) {
+      _pages.removeLast();
+      notifyListeners();
+    }
     return Future.value(true);
   }
 
