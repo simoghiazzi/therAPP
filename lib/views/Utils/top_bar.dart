@@ -37,6 +37,8 @@ class TopBar extends StatelessWidget {
     AppRouterDelegate routerDelegate =
         Provider.of<AppRouterDelegate>(context, listen: false);
 
+    assert(debugCheckHasMaterial(context));
+
     return Container(
       color: kPrimaryColor,
       child: SafeArea(

@@ -28,8 +28,8 @@ class NewPatientScreenState extends State<NewPatientScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: NewPatientBody(),
+    return const Scaffold(
+      body: NewPatientBody(),
     );
   }
 
