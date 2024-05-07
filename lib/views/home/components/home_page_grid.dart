@@ -11,7 +11,7 @@ class HomePageGrid extends StatelessWidget {
   /// Grid of the [BaseUserHomePageScreen].
   ///
   /// It contains the [DashCard]s that compose the grid.
-  const HomePageGrid({Key? key}) : super(key: key);
+  const HomePageGrid({super.key});
 
   @override
   Widget build(BuildContext context) {

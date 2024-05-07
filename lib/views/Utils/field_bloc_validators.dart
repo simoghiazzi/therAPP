@@ -11,7 +11,8 @@ class BlocValidators {
   ///
   /// Returns [BlocValidatorsErrors.underAge] if is not valid.
   static String? underage(dynamic value) {
-    DateTime adultHood = new DateTime(DateTime.now().year - 18, DateTime.now().month, DateTime.now().day);
+    DateTime adultHood = DateTime(
+        DateTime.now().year - 18, DateTime.now().month, DateTime.now().day);
     if (value == null || !(value is DateTime && value.isAfter(adultHood))) {
       return null;
     }
@@ -27,7 +28,7 @@ class BlocValidators {
   /// if is not valid.
   static String? phoneCorrect(String? string) {
     String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
-    RegExp regExp = new RegExp(pattern);
+    RegExp regExp = RegExp(pattern);
     if (string == null || string.isEmpty || regExp.hasMatch(string)) {
       return null;
     }

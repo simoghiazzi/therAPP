@@ -50,7 +50,7 @@ class AppRouterDelegate extends RouterDelegate<List<RouteSettings>>
     late Widget child;
     switch (routeSettings.name) {
       case NewPatientScreen.route:
-        child = NewPatientScreen();
+        child = const NewPatientScreen();
         break;
       case HomePageScreen.route:
         child = HomePageScreen(pageIndex: routeSettings.arguments as int?);

@@ -2,5 +2,9 @@
   {
     "name": "Modello originale",
     "file": "modello_originale.json"
+  },
+  {
+    "name": "Modello secondo",
+    "file": "modello_secondo.json"
   }
 ]

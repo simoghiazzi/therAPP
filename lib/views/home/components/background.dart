@@ -9,11 +9,11 @@ class Background extends StatelessWidget {
   /// Background of the [BaseUserHomePageBody].
   ///
   /// It takes the [child] that is shown above the background.
-  const Background({Key? key, required this.child}) : super(key: key);
+  const Background({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: double.infinity,
       child: Stack(

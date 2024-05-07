@@ -9,7 +9,7 @@ class Header extends StatelessWidget {
   /// Header of the application.
   ///
   /// It contains the top bar with the [SafeArea] and the name of the application.
-  const Header({Key? key}) : super(key: key);
+  const Header({super.key});
 
   @override
   Widget build(BuildContext context) {

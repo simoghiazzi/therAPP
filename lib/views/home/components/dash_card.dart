@@ -17,12 +17,11 @@ class DashCard extends StatelessWidget {
   /// It takes an [imagePath], a [text] and a [onTap] callback that it is executed
   /// when the card is pressed.
   const DashCard(
-      {Key? key,
+      {super.key,
       required this.imagePath,
       required this.text,
       required this.onTap,
-      required this.row})
-      : super(key: key);
+      required this.row});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +37,7 @@ class DashCard extends StatelessWidget {
           splashColor: kPrimaryColor.withAlpha(100),
           highlightColor: Colors.transparent,
           onTap: () => onTap(),
-          child: Container(
+          child: SizedBox(
             height:
                 (MediaQuery.of(context).orientation == Orientation.landscape)
                     ? 25.h

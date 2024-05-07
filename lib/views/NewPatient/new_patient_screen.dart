@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:therAPP/utils/json_file_manager.dart';
+import 'package:therAPP/views/NewPatient/components/new_patient_body.dart';
 
 class NewPatientScreen extends StatefulWidget {
   /// Route of the page used by the Navigator.
@@ -12,8 +13,8 @@ class NewPatientScreen extends StatefulWidget {
 }
 
 class NewPatientScreenState extends State<NewPatientScreen> {
-  // Variable to store the content of the JSON file
-  String templates = '';
+  // Variable to store the list of JSON items
+  List<Map<String, dynamic>> templates = [];
 
   @override
   void initState() {
@@ -27,13 +28,8 @@ class NewPatientScreenState extends State<NewPatientScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SingleChildScrollView(
-        padding: EdgeInsets.all(20.0),
-        child: templates.isEmpty
-            ? CircularProgressIndicator() // Show loading indicator if data is not loaded yet
-            : Text(templates), // Show JSON data as text
-      ),
+    return const Center(
+      child: NewPatientBody(),
     );
   }
 

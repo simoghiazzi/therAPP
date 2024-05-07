@@ -15,19 +15,19 @@ void main() {
   // Flutter initialization
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
   final String? homePage;
 
-  MyApp({Key? key, this.homePage}) : super(key: key);
+  const MyApp({super.key, this.homePage});
 
   @override
-  _MyAppState createState() => _MyAppState();
+  MyAppState createState() => MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class MyAppState extends State<MyApp> {
   AppRouterDelegate routerDelegate = AppRouterDelegate();
 
   @override
