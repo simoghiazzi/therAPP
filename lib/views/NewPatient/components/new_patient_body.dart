@@ -6,8 +6,13 @@ class NewPatientBody extends StatefulWidget {
   final bool showBack;
   final String barText;
 
+  final List<Map<String, dynamic>> templates;
+
   const NewPatientBody(
-      {super.key, this.showBack = true, this.barText = "Seleziona modello"});
+      {super.key,
+      this.showBack = true,
+      this.barText = "Seleziona modello",
+      required this.templates});
 
   @override
   NewPatientBodyState createState() => NewPatientBodyState();
@@ -16,10 +21,13 @@ class NewPatientBody extends StatefulWidget {
 class NewPatientBodyState extends State<NewPatientBody> {
   // Router Delegate
   late AppRouterDelegate routerDelegate;
+  String _selectedName = '';
 
   @override
   void initState() {
     super.initState();
+    // Initialize the selected value to the name of the first element
+    _selectedName = widget.templates[0]['name'];
   }
 
   @override
@@ -32,9 +40,25 @@ class NewPatientBodyState extends State<NewPatientBody> {
         ),
         Expanded(
           child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Container(constraints: const BoxConstraints(maxWidth: 500)),
-          ),
+              physics: const BouncingScrollPhysics(),
+              child: Container(
+                child: DropdownButton<String>(
+                  value: _selectedName,
+                  items: widget.templates.map<DropdownMenuItem<String>>(
+                    (Map<String, dynamic> item) {
+                      return DropdownMenuItem<String>(
+                        value: item["name"],
+                        child: Text(item["name"]),
+                      );
+                    },
+                  ).toList(),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      _selectedName = newValue!;
+                    });
+                  },
+                ),
+              )),
         ),
       ],
     );

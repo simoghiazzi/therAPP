@@ -14,34 +14,36 @@ class NewPatientScreen extends StatefulWidget {
 
 class NewPatientScreenState extends State<NewPatientScreen> {
   // Variable to store the list of JSON items
-  List<Map<String, dynamic>> templates = [];
-  String chosenFile = "";
+  late Future<List<Map<String, dynamic>>> _templatesFuture;
+  late Future<String> _chosenFileFuture;
 
   @override
   void initState() {
     super.initState();
-    loadJsonData('assets/templates/templates_list.json').then((value) {
-      setState(() {
-        templates = value;
-        chosenFile = value.first["file"];
-      });
-    });
+    _templatesFuture = loadJsonData('assets/templates/templates_list.json');
+    _chosenFileFuture = _templatesFuture
+        .then((value) => value.isNotEmpty ? value.first["file"] : "");
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: NewPatientBody(),
+    return Scaffold(
+      body: FutureBuilder(
+        future: Future.wait([_templatesFuture, _chosenFileFuture]),
+        builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return const Center(child: Text("Error loading data"));
+          } else {
+            List<Map<String, dynamic>> templates = snapshot.data![0];
+
+            return NewPatientBody(
+              templates: templates,
+            );
+          }
+        },
+      ),
     );
   }
-
-  /// Function called when the user chooses the model to be filled
-  ///
-  // void _onModelChosen(String filename) {
-  // ScaffoldMessenger.of(context).removeCurrentSnackBar();
-  // setState(() {
-  //   FocusScope.of(context).unfocus();
-  //   _currentIndex = index;
-  // });
-  // }
 }
