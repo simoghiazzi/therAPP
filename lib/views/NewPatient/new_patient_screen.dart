@@ -3,43 +3,45 @@ import 'package:therAPP/utils/json_file_manager.dart';
 import 'package:therAPP/views/NewPatient/components/new_patient_body.dart';
 
 class NewPatientScreen extends StatefulWidget {
-  /// Route of the page used by the Navigator.
   static const route = "/NewPatientScreen";
 
-  const NewPatientScreen({super.key});
+  const NewPatientScreen({Key? key}) : super(key: key);
 
   @override
   NewPatientScreenState createState() => NewPatientScreenState();
 }
 
 class NewPatientScreenState extends State<NewPatientScreen> {
-  // Variable to store the list of JSON items
   late Future<List<Map<String, dynamic>>> _templatesFuture;
-  late Future<String> _chosenFileFuture;
+  late String _chosenFile = "";
 
   @override
   void initState() {
     super.initState();
     _templatesFuture = loadJsonData('assets/templates/templates_list.json');
-    _chosenFileFuture = _templatesFuture
-        .then((value) => value.isNotEmpty ? value.first["file"] : "");
+  }
+
+  void updateChosenFile(String newName) {
+    setState(() {
+      _chosenFile = newName;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(
-        future: Future.wait([_templatesFuture, _chosenFileFuture]),
-        builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
+      body: FutureBuilder<List<Map<String, dynamic>>>(
+        future: _templatesFuture,
+        builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return const Center(child: Text("Error loading data"));
+            return Text('Error: ${snapshot.error}');
           } else {
-            List<Map<String, dynamic>> templates = snapshot.data![0];
-
             return NewPatientBody(
-              templates: templates,
+              templates: snapshot.data!,
+              chosenFile: _chosenFile,
+              updateChosenFile: updateChosenFile,
             );
           }
         },
