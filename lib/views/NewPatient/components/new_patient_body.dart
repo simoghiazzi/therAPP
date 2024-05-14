@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:therAPP/utils/render_module_field.dart';
 import 'package:therAPP/views/Home/components/rounded_button.dart';
 import 'package:therAPP/views/Utils/custom_sizer.dart';
 import 'package:therAPP/views/Utils/top_bar.dart';
@@ -136,11 +137,10 @@ class NewPatientBodyState extends State<NewPatientBody> {
                           if (entry.value is List) {
                             entryWidgets.addAll(
                               (entry.value as List).map<Widget>((item) {
-                                if (item is Map && item.containsKey('name')) {
-                                  return Text(
-                                    'Item: ${item['name']}; Value: ${item['value']}; Notes: ${item['notes']};',
-                                    style: const TextStyle(fontSize: 14),
-                                  );
+                                if (item is Map) {
+                                  return Align(
+                                      alignment: Alignment.center,
+                                      child: renderModuleField(item));
                                 }
                                 return const SizedBox.shrink();
                               }).toList(),
