@@ -1,5 +1,4 @@
 {
-  "nome": "Modello originale",
   "Anagrafica": [
     {
       "name": "Nome",
@@ -18,7 +17,7 @@
     {
       "name": "Sito",
       "type": 3,
-      "values": [
+      "options": [
         "Capo",
         "Cervicale",
         "Dorsale",
@@ -39,7 +38,7 @@
     {
       "name": "Insorgenza",
       "type": 2,
-      "values": [
+      "options": [
         "Giorno/i",
         "Settimana/i",
         "Un mese",
@@ -51,7 +50,7 @@
     {
       "name": "Caratteristiche",
       "type": 2,
-      "values": [
+      "options": [
         "Urente",
         "Scossa",
         "Localizzato",
@@ -63,17 +62,17 @@
     {
       "name": "Irradiazione",
       "type": 2,
-      "values": ["Si", "No"]
+      "options": ["Si", "No"]
     },
     {
       "name": "Timing",
       "type": 2,
-      "values": ["Mattina", "Sera", "Notte", "Costante", "Incostante"]
+      "options": ["Mattina", "Sera", "Notte", "Costante", "Incostante"]
     },
     {
       "name": "Fattori allevianti",
       "type": 3,
-      "values": [
+      "options": [
         "Riposo",
         "Postura",
         "Farmaco",
@@ -87,7 +86,7 @@
     {
       "name": "Fattori aggravanti",
       "type": 3,
-      "values": [
+      "options": [
         "Riposo",
         "Postura",
         "Stress",
@@ -101,14 +100,14 @@
     {
       "name": "Severità",
       "type": 4,
-      "values": [1, 10]
+      "options": [1, 10]
     }
   ],
   "Anamnesi remota": [
     {
       "name": "Trauma",
       "type": 2,
-      "values": [
+      "options": [
         "Osseo",
         "Articolare",
         "Cranico",
@@ -121,7 +120,7 @@
     {
       "name": "Operazione",
       "type": 2,
-      "values": [
+      "options": [
         "Ortopedica",
         "Cardio-vascolare",
         "Neurologica",
@@ -133,14 +132,14 @@
     {
       "name": "Altro",
       "type": 2,
-      "values": ["Neoplasie"]
+      "options": ["Neoplasie"]
     }
   ],
   "Anamnesi dei sistemi": [
     {
       "name": "Cardio",
       "type": 3,
-      "values": [
+      "options": [
         "Infarto",
         "P. Infiammatorie",
         "Valvulopatie",
@@ -153,12 +152,12 @@
     {
       "name": "Pneumo",
       "type": 3,
-      "values": ["BPCO", "Asma", "OSAS", "Insufficienza", "Embolia", "Altro"]
+      "options": ["BPCO", "Asma", "OSAS", "Insufficienza", "Embolia", "Altro"]
     },
     {
       "name": "Gastro",
       "type": 3,
-      "values": [
+      "options": [
         "IBS",
         "Gastrite",
         "Reflusso",
@@ -174,7 +173,7 @@
     {
       "name": "Genito",
       "type": 3,
-      "values": [
+      "options": [
         "Cistite",
         "Disturbi ciclo-mestruali",
         "Endometriosi",
@@ -186,7 +185,7 @@
     {
       "name": "Vista",
       "type": 3,
-      "values": [
+      "options": [
         "Deficit simmetrico",
         "Deficit asimmetrico",
         "Occhiali",
@@ -196,24 +195,24 @@
     {
       "name": "Bocca",
       "type": 3,
-      "values": ["Apparecchio", "ATM", "Bruxismo", "Altro"]
+      "options": ["Apparecchio", "ATM", "Bruxismo", "Altro"]
     },
     {
       "name": "Sonno",
       "type": 4,
-      "values": [1, 10]
+      "options": [1, 10]
     },
     {
       "name": "Attività fisica - Giorni",
       "type": 4,
-      "values": [1, 7]
+      "options": [1, 7]
     }
   ],
   "Criticità": [
     {
       "name": "Red Flags",
       "type": 3,
-      "values": [
+      "options": [
         "Storia di cancro",
         "Immunosoppressione",
         "Dolore notturno",
@@ -234,14 +233,14 @@
     {
       "name": "Psicologo",
       "type": 2,
-      "values": ["Si", "No"]
+      "options": ["Si", "No"]
     }
   ],
   "Osservazione": [
     {
       "name": "Red Flags",
       "type": 3,
-      "values": [
+      "options": [
         "Storia di cancro",
         "Immunosoppressione",
         "Dolore notturno",
@@ -262,14 +261,14 @@
     {
       "name": "Psicologo",
       "type": 2,
-      "values": ["Si", "No"]
+      "options": ["Si", "No"]
     }
   ],
   "Esaminazione": [
     {
       "name": "Mobilità Colonna",
       "type": 5,
-      "values": [
+      "options": [
         { "name": "Flessione", "slides": ["Si", "No"] },
         { "name": "Estensione", "slides": ["Si", "No"] },
         { "name": "Sidebendind dx", "slides": ["Si", "No"] },
@@ -279,7 +278,7 @@
     {
       "name": "Mobilità",
       "type": 5,
-      "values": [
+      "options": [
         { "name": "Oculare", "slides": ["Si", "No"] },
         { "name": "Vestibolare", "slides": ["Si", "No"] },
         { "name": "Overhead squat", "slides": ["Si", "No"] },
@@ -290,7 +289,7 @@
     {
       "name": "Gestione carico",
       "type": 5,
-      "values": [
+      "options": [
         { "name": "OA/OC", "slides": ["Si", "No"] },
         { "name": "Pulsion test", "slides": ["Si", "No"] },
         { "name": "Marcia OC", "slides": ["DX", "SX"] },
@@ -302,7 +301,7 @@
     {
       "name": "Cammino",
       "type": 2,
-      "values": [
+      "options": [
         "Capo",
         "Cervicale",
         "Dorsale",
@@ -323,7 +322,7 @@
     {
       "name": "Esame Neurologico",
       "type": 2,
-      "values": [
+      "options": [
         "Capo",
         "Cervicale",
         "Dorsale",
@@ -344,12 +343,12 @@
     {
       "name": "Esame Neurologico",
       "type": 5,
-      "values": [{ "name": "Sommazione", "slides": ["Si", "No"] }]
+      "options": [{ "name": "Sommazione", "slides": ["Si", "No"] }]
     },
     {
       "name": "Supino",
       "type": 5,
-      "values": [
+      "options": [
         { "name": "Articolarità caviglie", "slides": ["Si", "No"] },
         { "name": "Rotazione anca dx", "slides": ["Si", "No"] },
         { "name": "Rotazione anca sx", "slides": ["Si", "No"] },

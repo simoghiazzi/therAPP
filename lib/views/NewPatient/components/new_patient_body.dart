@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:therAPP/views/Home/components/rounded_button.dart';
 import 'package:therAPP/views/Utils/custom_sizer.dart';
 import 'package:therAPP/views/Utils/top_bar.dart';
 
@@ -8,15 +9,23 @@ class NewPatientBody extends StatefulWidget {
   final List<Map<String, dynamic>> templates;
   final dynamic chosenFile;
   final Function(String) updateChosenFile;
+  final Map<String, dynamic> newUserModel;
+  final int step;
+  final Function() nextStep;
+  final Function() previousStep;
 
-  const NewPatientBody({
-    Key? key,
-    this.showBack = true,
-    this.barText = "Seleziona modello",
-    required this.templates,
-    required this.chosenFile,
-    required this.updateChosenFile,
-  }) : super(key: key);
+  const NewPatientBody(
+      {Key? key,
+      this.showBack = true,
+      this.barText = "Seleziona modello",
+      required this.templates,
+      required this.chosenFile,
+      required this.updateChosenFile,
+      required this.newUserModel,
+      required this.step,
+      required this.nextStep,
+      required this.previousStep})
+      : super(key: key);
 
   @override
   NewPatientBodyState createState() => NewPatientBodyState();
@@ -43,6 +52,12 @@ class NewPatientBodyState extends State<NewPatientBody> {
     }
   }
 
+  Widget renderForm() {
+    return Column(
+      children: <Widget>[Container()],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -51,31 +66,94 @@ class NewPatientBodyState extends State<NewPatientBody> {
           text: widget.barText,
           back: widget.showBack,
         ),
-        SizedBox(
-            height: (MediaQuery.of(context).orientation == Orientation.portrait)
-                ? 50.h
-                : 40.h),
         Expanded(
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
-            child: DropdownButton<String>(
-              value: _chosenFileName,
-              items: widget.templates.map<DropdownMenuItem<String>>(
-                (Map<String, dynamic> item) {
-                  return DropdownMenuItem<String>(
-                    value: item["name"],
-                    child: Text(item["name"]),
-                  );
-                },
-              ).toList(),
-              onChanged: (String? newValue) {
-                if (newValue != null) {
-                  setState(() {
-                    _chosenFileName = newValue;
-                  });
-                  widget.updateChosenFile(newValue);
-                }
-              },
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  if (widget.step == 1) ...[
+                    SizedBox(
+                      height: (MediaQuery.of(context).orientation ==
+                              Orientation.portrait)
+                          ? 40.h
+                          : 30.h,
+                    ),
+                    DropdownButton<String>(
+                      value: _chosenFileName,
+                      items: widget.templates.map<DropdownMenuItem<String>>(
+                        (Map<String, dynamic> item) {
+                          return DropdownMenuItem<String>(
+                            value: item["name"],
+                            child: Text(item["name"]),
+                          );
+                        },
+                      ).toList(),
+                      onChanged: (String? newValue) {
+                        if (newValue != null) {
+                          setState(() {
+                            _chosenFileName = newValue;
+                          });
+                          widget.updateChosenFile(newValue);
+                        }
+                      },
+                    ),
+                    SizedBox(
+                      height: (MediaQuery.of(context).orientation ==
+                              Orientation.portrait)
+                          ? 3.h
+                          : 2.h,
+                    ),
+                    RoundedButton(
+                      text: "CONFERMA",
+                      onTap: () {
+                        FocusScope.of(context).unfocus();
+                        widget.nextStep();
+                      },
+                      enabled: widget.newUserModel.isNotEmpty,
+                    ),
+                  ],
+                  if (widget.step == 2) ...[
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ...widget.newUserModel.entries.expand((entry) {
+                          List<Widget> entryWidgets = [];
+                          entryWidgets.add(
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                entry.key.toUpperCase(),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 13.sp,
+                                ),
+                              ),
+                            ),
+                          );
+
+                          if (entry.value is List) {
+                            entryWidgets.addAll(
+                              (entry.value as List).map<Widget>((item) {
+                                if (item is Map && item.containsKey('name')) {
+                                  return Text(
+                                    'Item: ${item['name']}; Value: ${item['value']}; Notes: ${item['notes']};',
+                                    style: const TextStyle(fontSize: 14),
+                                  );
+                                }
+                                return const SizedBox.shrink();
+                              }).toList(),
+                            );
+                          }
+
+                          return entryWidgets;
+                        }).toList(),
+                      ],
+                    ),
+                  ],
+                ],
+              ),
             ),
           ),
         ),
