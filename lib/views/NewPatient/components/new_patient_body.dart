@@ -66,6 +66,7 @@ class NewPatientBodyState extends State<NewPatientBody> {
         TopBar(
           text: widget.barText,
           back: widget.showBack,
+          goBack: widget.step > 1 ? widget.previousStep : null,
         ),
         Expanded(
           child: SingleChildScrollView(
@@ -139,8 +140,10 @@ class NewPatientBodyState extends State<NewPatientBody> {
                               (entry.value as List).map<Widget>((item) {
                                 if (item is Map) {
                                   return Align(
-                                      alignment: Alignment.center,
-                                      child: renderModuleField(item));
+                                      alignment: Alignment.centerLeft,
+                                      child: SizedBox(
+                                          child: renderModuleField(
+                                              item, context)));
                                 }
                                 return const SizedBox.shrink();
                               }).toList(),
@@ -148,7 +151,23 @@ class NewPatientBodyState extends State<NewPatientBody> {
                           }
 
                           return entryWidgets;
-                        }).toList(),
+                        }),
+                        SizedBox(
+                          height: (MediaQuery.of(context).orientation ==
+                                  Orientation.portrait)
+                              ? 4.h
+                              : 3.h,
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: RoundedButton(
+                            text: "CONFERMA",
+                            onTap: () {
+                              print(widget.newUserModel);
+                            },
+                            enabled: widget.newUserModel.isNotEmpty,
+                          ),
+                        )
                       ],
                     ),
                   ],

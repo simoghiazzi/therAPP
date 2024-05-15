@@ -4,12 +4,6 @@ import 'package:therAPP/Views/Utils/custom_sizer.dart';
 import 'package:therAPP/Views/Utils/constants.dart';
 import 'package:therAPP/Router/app_router_delegate.dart';
 
-/// Top bar of the base pages.
-///
-/// It takes the [text], the [backIcon], a list of [buttons] that are displayed
-/// on the right and a [onBack] function that is called when the back button is pressed.
-///
-/// The [back] flag specifies if the back icon button has to be displayed or not.
 class TopBar extends StatelessWidget {
   final String text;
   final double? textSize;
@@ -18,12 +12,6 @@ class TopBar extends StatelessWidget {
   final bool back;
   final Function()? goBack;
 
-  /// Top bar of the base pages.
-  ///
-  /// It takes the [text], the [backIcon], a list of [buttons] that are displayed
-  /// on the right and a [onBack] function that is called when the back button is pressed.
-  ///
-  /// The [back] flag specifies if the back icon button has to be displayed or not.
   const TopBar({
     super.key,
     required this.text,
@@ -45,14 +33,16 @@ class TopBar extends StatelessWidget {
       color: kPrimaryColor,
       child: SafeArea(
         child: Container(
-          decoration: const BoxDecoration(color: kPrimaryColor),
           height: 7.8.h,
+          padding: EdgeInsets.symmetric(horizontal: 2.5.w),
+          decoration: const BoxDecoration(color: kPrimaryColor),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              if (back) ...[
-                InkWell(
-                  child: InkResponse(
+              if (back)
+                Container(
+                  margin: EdgeInsets.only(right: 3.w), // Add right margin here
+                  child: InkWell(
                     onTap: () {
                       FocusScope.of(context).unfocus();
                       if (goBack != null) {
@@ -61,36 +51,27 @@ class TopBar extends StatelessWidget {
                         routerDelegate.pop();
                       }
                     },
-                    child: Container(
-                        padding: EdgeInsets.only(left: 2.5.w, right: 2.5.w),
-                        child: Icon(backIcon, color: Colors.white, size: 25)),
+                    child: Icon(backIcon, color: Colors.white, size: 25),
                   ),
-                ),
-              ] else ...[
+                )
+              else
                 SizedBox(width: 4.w),
-              ],
-              Container(
-                alignment: Alignment.centerLeft,
+              Expanded(
                 child: Text(
                   text,
                   style: TextStyle(
-                      fontSize: textSize ?? 15.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                    fontSize: textSize ?? 15.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                   maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
-              const Spacer(),
-              Container(
-                padding: const EdgeInsets.only(right: 15),
-                child: Row(
-                  children: [
-                    if (buttons != null) ...[
-                      for (int i = 0; i < buttons!.length; i++) buttons![i]
-                    ]
-                  ],
+              if (buttons != null)
+                Row(
+                  children: buttons!,
                 ),
-              ),
             ],
           ),
         ),
