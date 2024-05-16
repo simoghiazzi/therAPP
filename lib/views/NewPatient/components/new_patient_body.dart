@@ -124,7 +124,7 @@ class NewPatientBodyState extends State<NewPatientBody> {
                           List<Widget> entryWidgets = [];
                           entryWidgets.add(
                             Align(
-                              alignment: Alignment.centerLeft,
+                              alignment: Alignment.center,
                               child: Text(
                                 entry.key.toUpperCase(),
                                 style: TextStyle(
@@ -134,6 +134,13 @@ class NewPatientBodyState extends State<NewPatientBody> {
                               ),
                             ),
                           );
+
+                          entryWidgets.add(SizedBox(
+                            height: (MediaQuery.of(context).orientation ==
+                                    Orientation.portrait)
+                                ? 2.h
+                                : 1.h,
+                          ));
 
                           if (entry.value is List) {
                             entryWidgets.addAll(

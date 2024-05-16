@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:therAPP/views/Utils/constants.dart';
 import 'package:therAPP/views/Utils/custom_sizer.dart';
 
+// ignore: must_be_immutable
 class RenderModuleField extends StatefulWidget {
   final dynamic field;
+  bool showNote = false;
 
   RenderModuleField({Key? key, required this.field}) : super(key: key);
 
@@ -34,62 +37,6 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
     super.dispose();
   }
 
-  void _showCheckboxDialog() async {
-    List<String> selectedOptions =
-        List<String>.from(widget.field['values'] ?? []);
-    List<String> options = List<String>.from(widget.field['options'] ?? []);
-
-    List<String>? result = await showDialog<List<String>>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(widget.field['name']),
-          content: Scrollbar(
-            child: SingleChildScrollView(
-              child: ListBody(
-                children: options.map((option) {
-                  return CheckboxListTile(
-                    value: selectedOptions.contains(option),
-                    title: Text(option),
-                    onChanged: (bool? value) {
-                      setState(() {
-                        if (value == true) {
-                          selectedOptions.add(option);
-                        } else {
-                          selectedOptions.remove(option);
-                        }
-                      });
-                    },
-                  );
-                }).toList(),
-              ),
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text('Cancel'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop(selectedOptions);
-              },
-            ),
-          ],
-        );
-      },
-    );
-
-    if (result != null) {
-      setState(() {
-        widget.field['values'] = result;
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     switch (widget.field['type']) {
@@ -111,8 +58,8 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
             SizedBox(
               height:
                   (MediaQuery.of(context).orientation == Orientation.portrait)
-                      ? 3.h
-                      : 2.h,
+                      ? 4.h
+                      : 3.h,
             ),
           ],
         );
@@ -138,75 +85,26 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
             SizedBox(
               height:
                   (MediaQuery.of(context).orientation == Orientation.portrait)
-                      ? 3.h
-                      : 2.h,
+                      ? 5.h
+                      : 4.h,
             ),
           ],
         );
       case 3:
-        return Column(
-          children: [
-            DropdownButtonFormField(
-              value: widget.field['value'] != ''
-                  ? widget.field['value']
-                  : widget.field['options'][0],
-              items: widget.field['options']
-                  .map<DropdownMenuItem<String>>((option) {
-                return DropdownMenuItem<String>(
-                  value: option,
-                  child: Text(option),
-                );
-              }).toList(),
-              onChanged: (newValue) {
-                setState(() {
-                  widget.field['value'] = newValue;
-                });
-              },
-              decoration: InputDecoration(
-                border: const OutlineInputBorder(),
-                labelText: widget.field['name'],
-              ),
-            ),
-            SizedBox(
-              height:
-                  (MediaQuery.of(context).orientation == Orientation.portrait)
-                      ? 1.h
-                      : 0.5.h,
-            ),
-            TextField(
-              controller: notesController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Note',
-              ),
-              onChanged: (text) {
-                setState(() {
-                  widget.field['notes'] = text;
-                });
-              },
-            ),
-            SizedBox(
-              height:
-                  (MediaQuery.of(context).orientation == Orientation.portrait)
-                      ? 4.h
-                      : 3.h,
-            ),
-          ],
-        );
-      case 4:
+        List<String> options = List<String>.from(widget.field['options'] ?? []);
+        String? selectedOption = widget.field['values']?.isNotEmpty == true
+            ? widget.field['values']![0]
+            : null;
+
         return Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  onPressed: _showCheckboxDialog,
-                  style: ElevatedButton.styleFrom(
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      side: const BorderSide(color: Colors.transparent),
-                      foregroundColor: kPrimaryColor),
-                  child: Text(widget.field['name'] + ':'),
+                Text(
+                  widget.field['name'],
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 9.sp),
                 ),
                 SizedBox(
                   width: (MediaQuery.of(context).orientation ==
@@ -214,7 +112,18 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
                       ? 1.h
                       : 2.h,
                 ),
-                Text('${widget.field['values']?.join(', ') ?? ''}'),
+                GestureDetector(
+                  child: Text(
+                    widget.showNote ? "  -  " : "  +  ",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 10.sp),
+                  ),
+                  onTap: () {
+                    setState(() {
+                      widget.showNote = !widget.showNote;
+                    });
+                  },
+                ),
               ],
             ),
             SizedBox(
@@ -223,23 +132,159 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
                       ? 1.h
                       : 0.5.h,
             ),
-            TextField(
-              controller: notesController,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Note',
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Wrap(
+                spacing: 8.0,
+                children: options.map((option) {
+                  bool isSelected = selectedOption == option;
+
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        if (isSelected) {
+                          // Deselect the item if it's already selected
+                          selectedOption = null;
+                          widget.field['values'] = [];
+                        } else {
+                          // Select the item if it's not already selected
+                          selectedOption = option;
+                          widget.field['values'] = [selectedOption];
+                        }
+                      });
+                    },
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
+                      decoration: BoxDecoration(
+                        color: isSelected ? kPrimaryColor : Colors.white,
+                        borderRadius: BorderRadius.circular(15.0),
+                        border: Border.all(
+                          color: kPrimaryColor,
+                          width: 1.0, // Adjust border width as needed
+                        ),
+                      ),
+                      child: Text(
+                        option,
+                        style: TextStyle(
+                          color: isSelected ? Colors.white : Colors.black,
+                        ),
+                      ),
+                    ),
+                  );
+                }).toList(),
               ),
-              onChanged: (text) {
-                setState(() {
-                  widget.field['notes'] = text;
-                });
-              },
             ),
+            widget.showNote
+                ? Column(
+                    children: [
+                      SizedBox(
+                        height: (MediaQuery.of(context).orientation ==
+                                Orientation.portrait)
+                            ? 1.h
+                            : 0.5.h,
+                      ),
+                      TextField(
+                        controller: notesController,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Note',
+                        ),
+                        onChanged: (text) {
+                          setState(() {
+                            widget.field['notes'] = text;
+                          });
+                        },
+                      )
+                    ],
+                  )
+                : Container(),
             SizedBox(
               height:
                   (MediaQuery.of(context).orientation == Orientation.portrait)
-                      ? 4.h
-                      : 3.h,
+                      ? 6.h
+                      : 5.h,
+            ),
+          ],
+        );
+
+      case 4:
+        return Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment
+                  .center, // Centers the row's children horizontally
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  widget.field['name'],
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 9.sp),
+                ),
+                SizedBox(
+                  width: (MediaQuery.of(context).orientation ==
+                          Orientation.portrait)
+                      ? 1.h
+                      : 2.h,
+                ),
+                GestureDetector(
+                  child: Text(
+                    widget.showNote ? "  -  " : "  +  ",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 10.sp),
+                  ),
+                  onTap: () {
+                    setState(() {
+                      widget.showNote = !widget.showNote;
+                    });
+                  },
+                ),
+              ],
+            ),
+            MultiSelectChipField<String?>(
+              items: List<String>.from(widget.field['options'])
+                  .map((String option) =>
+                      MultiSelectItem<String?>(option, option))
+                  .toList(),
+              initialValue: widget.field['values']?.cast<String?>() ?? [],
+              title: Text(widget.field['name']),
+              showHeader: false,
+              selectedChipColor: kPrimaryColor,
+              selectedTextStyle: const TextStyle(color: Colors.white),
+              decoration: const BoxDecoration(),
+              scroll: false,
+              onTap: (List<String?>? values) {
+                setState(() {
+                  widget.field['values'] = values?.cast<String>() ?? [];
+                });
+              },
+            ),
+            widget.showNote
+                ? Column(children: [
+                    SizedBox(
+                      height: (MediaQuery.of(context).orientation ==
+                              Orientation.portrait)
+                          ? 1.h
+                          : 0.5.h,
+                    ),
+                    TextField(
+                      controller: notesController,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Note',
+                      ),
+                      onChanged: (text) {
+                        setState(() {
+                          widget.field['notes'] = text;
+                        });
+                      },
+                    )
+                  ])
+                : Container(),
+            SizedBox(
+              height:
+                  (MediaQuery.of(context).orientation == Orientation.portrait)
+                      ? 5.h
+                      : 4.h,
             ),
           ],
         );
@@ -248,11 +293,41 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
             ": " +
             widget.field['value'].toString();
         return Column(children: [
-          Text(
-            text,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment
+                .center, // Centers the row's children horizontally
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                text,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                width:
+                    (MediaQuery.of(context).orientation == Orientation.portrait)
+                        ? 2.h
+                        : 2.h,
+              ),
+              GestureDetector(
+                child: Text(
+                  widget.showNote ? "  -  " : "  +  ",
+                  style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 10.sp),
+                ),
+                onTap: () {
+                  setState(() {
+                    widget.showNote = !widget.showNote;
+                  });
+                },
+              ),
+            ],
+          ),
+          SizedBox(
+            height: (MediaQuery.of(context).orientation == Orientation.portrait)
+                ? 3.h
+                : 2.h,
           ),
           Slider(
             value: widget.field['value'] != ''
@@ -269,61 +344,113 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
               });
             },
           ),
+          widget.showNote
+              ? Column(children: [
+                  SizedBox(
+                    height: (MediaQuery.of(context).orientation ==
+                            Orientation.portrait)
+                        ? 1.h
+                        : 0.5.h,
+                  ),
+                  TextField(
+                    controller: notesController,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Note',
+                    ),
+                    onChanged: (text) {
+                      setState(() {
+                        widget.field['notes'] = text;
+                      });
+                    },
+                  )
+                ])
+              : Container(),
           SizedBox(
             height: (MediaQuery.of(context).orientation == Orientation.portrait)
-                ? 1.h
-                : 0.5.h,
-          ),
-          TextField(
-            controller: notesController,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Note',
-            ),
-            onChanged: (text) {
-              setState(() {
-                widget.field['notes'] = text;
-              });
-            },
-          ),
-          SizedBox(
-            height: (MediaQuery.of(context).orientation == Orientation.portrait)
-                ? 4.h
-                : 3.h,
+                ? 5.h
+                : 4.h,
           ),
         ]);
       case 6:
-        return Column(children: [
-          Text("CIAO"),
-          SizedBox(
-            height: (MediaQuery.of(context).orientation == Orientation.portrait)
-                ? 1.h
-                : 0.5.h,
-          ),
-          TextField(
-            controller: notesController,
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Note',
+        List<dynamic> options = widget.field['options'];
+        return Column(
+          children: [
+            Text(
+              widget.field['name'],
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 9.sp),
             ),
-            onChanged: (text) {
-              setState(() {
-                widget.field['notes'] = text;
-              });
-            },
-          ),
-          SizedBox(
-            height: (MediaQuery.of(context).orientation == Orientation.portrait)
-                ? 4.h
-                : 3.h,
-          ),
-        ]);
-      default:
-        return SizedBox(
-          height: (MediaQuery.of(context).orientation == Orientation.portrait)
-              ? 4.h
-              : 3.h,
+            SizedBox(
+              height:
+                  (MediaQuery.of(context).orientation == Orientation.portrait)
+                      ? 1.h
+                      : 0.5.h,
+            ),
+            // Use map() to create a list of Text widgets for each option, and then use the spread operator to flatten the list
+            ...options.map((option) => Column(children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment
+                        .center, // Centers the row's children horizontally
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        option['name'],
+                        style: TextStyle(fontSize: 7.sp),
+                      ),
+                      SizedBox(
+                        width: (MediaQuery.of(context).orientation ==
+                                Orientation.portrait)
+                            ? 2.h
+                            : 2.h,
+                      ),
+                      GestureDetector(
+                        child: Text(
+                          widget.showNote ? "  -  " : "  +  ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 10.sp),
+                        ),
+                        onTap: () {
+                          setState(() {
+                            widget.showNote = !widget.showNote;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                  widget.showNote
+                      ? Column(children: [
+                          SizedBox(
+                            height: (MediaQuery.of(context).orientation ==
+                                    Orientation.portrait)
+                                ? 1.h
+                                : 0.5.h,
+                          ),
+                          TextField(
+                            controller: notesController,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'Note',
+                            ),
+                            onChanged: (text) {
+                              setState(() {
+                                widget.field['notes'] = text;
+                              });
+                            },
+                          )
+                        ])
+                      : Container(),
+                ])),
+            SizedBox(
+              height:
+                  (MediaQuery.of(context).orientation == Orientation.portrait)
+                      ? 5.h
+                      : 4.h,
+            ),
+          ],
         );
+
+      default:
+        return const Text("DEFAULT");
     }
   }
 }

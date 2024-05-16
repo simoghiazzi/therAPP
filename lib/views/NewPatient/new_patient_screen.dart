@@ -45,6 +45,12 @@ class NewPatientScreenState extends State<NewPatientScreen> {
               item['values'] = [];
             } else if (item['type'] == 5) {
               item['value'] = item['options'][0];
+            } else if (item['type'] == 6) {
+              List<dynamic> options = item['options'];
+              for (var option in options) {
+                option['value'] = "";
+                option['notes'] = "";
+              }
             } else {
               item['value'] = "";
             }
