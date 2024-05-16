@@ -41,7 +41,13 @@ class NewPatientScreenState extends State<NewPatientScreen> {
           List<Map<String, dynamic>> items =
               List<Map<String, dynamic>>.from(value);
           for (var item in items) {
-            item['value'] = "";
+            if (item['type'] == 4) {
+              item['values'] = [];
+            } else if (item['type'] == 5) {
+              item['value'] = item['options'][0];
+            } else {
+              item['value'] = "";
+            }
             item['notes'] = "";
           }
           newUserModel[key] = items;
@@ -72,7 +78,11 @@ class NewPatientScreenState extends State<NewPatientScreen> {
           List<Map<String, dynamic>> items =
               List<Map<String, dynamic>>.from(value);
           for (var item in items) {
-            item['value'] = "";
+            if (item['type'] == 4) {
+              item['values'] = [];
+            } else {
+              item['value'] = "";
+            }
             item['notes'] = "";
           }
           newUserModel[key] = items;

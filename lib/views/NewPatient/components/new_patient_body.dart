@@ -140,10 +140,11 @@ class NewPatientBodyState extends State<NewPatientBody> {
                               (entry.value as List).map<Widget>((item) {
                                 if (item is Map) {
                                   return Align(
-                                      alignment: Alignment.centerLeft,
+                                      alignment: Alignment.center,
                                       child: SizedBox(
-                                          child: renderModuleField(
-                                              item, context)));
+                                          width: 130.w,
+                                          child:
+                                              RenderModuleField(field: item)));
                                 }
                                 return const SizedBox.shrink();
                               }).toList(),
