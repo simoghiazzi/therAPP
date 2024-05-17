@@ -160,12 +160,6 @@ class NewPatientBodyState extends State<NewPatientBody> {
 
                           return entryWidgets;
                         }),
-                        SizedBox(
-                          height: (MediaQuery.of(context).orientation ==
-                                  Orientation.portrait)
-                              ? 4.h
-                              : 3.h,
-                        ),
                         Align(
                           alignment: Alignment.center,
                           child: RoundedButton(
@@ -175,7 +169,13 @@ class NewPatientBodyState extends State<NewPatientBody> {
                             },
                             enabled: widget.newUserModel.isNotEmpty,
                           ),
-                        )
+                        ),
+                        SizedBox(
+                          height: (MediaQuery.of(context).orientation ==
+                                  Orientation.portrait)
+                              ? 4.h
+                              : 3.h,
+                        ),
                       ],
                     ),
                   ],

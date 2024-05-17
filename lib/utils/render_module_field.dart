@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
+import 'package:therAPP/utils/options_swipe_screen.dart';
 import 'package:therAPP/views/Utils/constants.dart';
 import 'package:therAPP/views/Utils/custom_sizer.dart';
 
@@ -40,7 +41,7 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
   @override
   Widget build(BuildContext context) {
     switch (widget.field['type']) {
-      case 1:
+      case 1: //TextField
         return Column(
           children: [
             TextField(
@@ -63,7 +64,7 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
             ),
           ],
         );
-      case 2:
+      case 2: //TextField only NUMBERS
         return Column(
           children: [
             TextField(
@@ -90,7 +91,7 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
             ),
           ],
         );
-      case 3:
+      case 3: //Single selection
         List<String> options = List<String>.from(widget.field['options'] ?? []);
         String? selectedOption = widget.field['values']?.isNotEmpty == true
             ? widget.field['values']![0]
@@ -208,7 +209,7 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
           ],
         );
 
-      case 4:
+      case 4: //Multiple Selection
         return Column(
           children: [
             Row(
@@ -288,7 +289,7 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
             ),
           ],
         );
-      case 5:
+      case 5: //Slider
         String text = widget.field['name'].toUpperCase() +
             ": " +
             widget.field['value'].toString();
@@ -372,83 +373,10 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
                 : 4.h,
           ),
         ]);
-      case 6:
-        List<dynamic> options = widget.field['options'];
-        return Column(
-          children: [
-            Text(
-              widget.field['name'],
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 9.sp),
-            ),
-            SizedBox(
-              height:
-                  (MediaQuery.of(context).orientation == Orientation.portrait)
-                      ? 1.h
-                      : 0.5.h,
-            ),
-            // Use map() to create a list of Text widgets for each option, and then use the spread operator to flatten the list
-            ...options.map((option) => Column(children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment
-                        .center, // Centers the row's children horizontally
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        option['name'],
-                        style: TextStyle(fontSize: 7.sp),
-                      ),
-                      SizedBox(
-                        width: (MediaQuery.of(context).orientation ==
-                                Orientation.portrait)
-                            ? 2.h
-                            : 2.h,
-                      ),
-                      GestureDetector(
-                        child: Text(
-                          widget.showNote ? "  -  " : "  +  ",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 10.sp),
-                        ),
-                        onTap: () {
-                          setState(() {
-                            widget.showNote = !widget.showNote;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                  widget.showNote
-                      ? Column(children: [
-                          SizedBox(
-                            height: (MediaQuery.of(context).orientation ==
-                                    Orientation.portrait)
-                                ? 1.h
-                                : 0.5.h,
-                          ),
-                          TextField(
-                            controller: notesController,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: 'Note',
-                            ),
-                            onChanged: (text) {
-                              setState(() {
-                                widget.field['notes'] = text;
-                              });
-                            },
-                          )
-                        ])
-                      : Container(),
-                ])),
-            SizedBox(
-              height:
-                  (MediaQuery.of(context).orientation == Orientation.portrait)
-                      ? 5.h
-                      : 4.h,
-            ),
-          ],
-        );
-
+      case 6: //Swipe
+        List<Map<String, dynamic>> options =
+            List<Map<String, dynamic>>.from(widget.field['options'] ?? []);
+        return OptionsSwipeScreen(options: options);
       default:
         return const Text("DEFAULT");
     }

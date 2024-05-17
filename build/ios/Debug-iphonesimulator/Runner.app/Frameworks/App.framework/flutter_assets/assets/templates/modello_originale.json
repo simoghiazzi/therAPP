@@ -340,9 +340,33 @@
         { "name": "Overhead passivo", "slides": ["Si", "No"] },
         { "name": "Candelabro", "slides": ["Si", "No"] },
         { "name": "Articolarità cervicale", "slides": ["Si", "No"] },
-        { "name": "Articolarità cervicale", "slides": ["Si", "No"] },
-        { "name": "Punti repere", "slides": ["Si", "No"] },
-        { "name": "Scaleni", "slides": ["Si", "No"] }
+        { "name": "Hamstrings IKN", "slides": ["Si", "No"] }
+      ]
+    },
+    {
+      "name": "Punti Repere",
+      "type": 6,
+      "options": [
+        { "name": "Ascolto cranico", "slides": ["Si", "No"] },
+        { "name": "Suboccipitali", "slides": ["Si", "No"] },
+        { "name": "Temporale", "slides": ["Si", "No"] },
+        { "name": "Massetere", "slides": ["Si", "No"] },
+        { "name": "Pterigoidei", "slides": ["Si", "No"] },
+        { "name": "Milo/ioidei", "slides": ["Si", "No"] },
+        { "name": "SCOM", "slides": ["Si", "No"] },
+        { "name": "Trasverse cervicali", "slides": ["Si", "No"] },
+        { "name": "Accomodazione STS", "slides": ["Si", "No"] },
+        { "name": "Elevatore scapola", "slides": ["Si", "No"] },
+        { "name": "Fasce pettorali", "slides": ["Si", "No"] },
+        { "name": "Mediastino", "slides": ["Si", "No"] },
+        { "name": "Diaframma", "slides": ["Si", "No"] },
+        { "name": "Quadranti addominali", "slides": ["Si", "No"] },
+        { "name": "Accomodazione SIAS", "slides": ["Si", "No"] },
+        { "name": "Fascia lata", "slides": ["Si", "No"] },
+        { "name": "Tricipite surale", "slides": ["Si", "No"] },
+        { "name": "Tibiale anteriore", "slides": ["Si", "No"] },
+        { "name": "Membrana interossea", "slides": ["Si", "No"] },
+        { "name": "Fascia plantare", "slides": ["Si", "No"] }
       ]
     }
   ]
