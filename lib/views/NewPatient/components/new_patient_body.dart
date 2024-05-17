@@ -14,6 +14,7 @@ class NewPatientBody extends StatefulWidget {
   final int step;
   final Function() nextStep;
   final Function() previousStep;
+  final bool showNoNameError;
 
   const NewPatientBody(
       {Key? key,
@@ -25,7 +26,8 @@ class NewPatientBody extends StatefulWidget {
       required this.newUserModel,
       required this.step,
       required this.nextStep,
-      required this.previousStep})
+      required this.previousStep,
+      required this.showNoNameError})
       : super(key: key);
 
   @override
@@ -160,12 +162,29 @@ class NewPatientBodyState extends State<NewPatientBody> {
 
                           return entryWidgets;
                         }),
+                        widget.showNoNameError
+                            ? Align(
+                                alignment: Alignment.center,
+                                child: Column(children: [
+                                  Text("INSERIRE NOME E COGNOME",
+                                      style: TextStyle(
+                                          fontSize: 7.sp, color: Colors.red)),
+                                  SizedBox(
+                                    height:
+                                        (MediaQuery.of(context).orientation ==
+                                                Orientation.portrait)
+                                            ? 2.h
+                                            : 1.h,
+                                  )
+                                ]),
+                              )
+                            : Container(),
                         Align(
                           alignment: Alignment.center,
                           child: RoundedButton(
                             text: "CONFERMA",
                             onTap: () {
-                              print(widget.newUserModel);
+                              widget.nextStep();
                             },
                             enabled: widget.newUserModel.isNotEmpty,
                           ),

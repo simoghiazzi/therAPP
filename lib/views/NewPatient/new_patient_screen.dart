@@ -20,6 +20,7 @@ class NewPatientScreenState extends State<NewPatientScreen> {
   late Map<String, dynamic> newUserModel = {};
   int step = 1;
   String barTitle = "Seleziona modello";
+  bool showNoNameError = false;
 
   @override
   void initState() {
@@ -101,9 +102,23 @@ class NewPatientScreenState extends State<NewPatientScreen> {
   }
 
   void nextStep() {
+    if (step == 2) {
+      String name = newUserModel['Anagrafica'][0]['value'] +
+          " " +
+          newUserModel['Anagrafica'][1]['value'];
+      print(name);
+      // String targetDirPath = ('assets/templates/$fileToLoad');
+    }
     setState(() {
-      step += 1;
-      barTitle = "Anamnesi del paziente";
+      if (step < 2) {
+        step += 1;
+        barTitle = "Anamnesi del paziente";
+      } else if (newUserModel['Anagrafica'][0]['value'] == "" ||
+          newUserModel['Anagrafica'][1]['value'] == "") {
+        showNoNameError = true;
+      } else {
+        barTitle = "Seleziona modello";
+      }
     });
   }
 
@@ -134,6 +149,7 @@ class NewPatientScreenState extends State<NewPatientScreen> {
               nextStep: nextStep,
               previousStep: previousStep,
               barText: barTitle,
+              showNoNameError: showNoNameError,
             );
           }
         },

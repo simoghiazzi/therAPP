@@ -155,8 +155,8 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
                       });
                     },
                     child: Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 6.0, horizontal: 12.0),
                       decoration: BoxDecoration(
                         color: isSelected ? kPrimaryColor : Colors.white,
                         borderRadius: BorderRadius.circular(15.0),
