@@ -15,9 +15,10 @@ class NewPatientBody extends StatefulWidget {
   final Function() nextStep;
   final Function() previousStep;
   final bool showNoNameError;
+  final bool loading;
 
   const NewPatientBody(
-      {Key? key,
+      {super.key,
       this.showBack = true,
       this.barText = "Seleziona modello",
       required this.templates,
@@ -27,8 +28,8 @@ class NewPatientBody extends StatefulWidget {
       required this.step,
       required this.nextStep,
       required this.previousStep,
-      required this.showNoNameError})
-      : super(key: key);
+      required this.showNoNameError,
+      required this.loading});
 
   @override
   NewPatientBodyState createState() => NewPatientBodyState();
@@ -181,13 +182,15 @@ class NewPatientBodyState extends State<NewPatientBody> {
                             : Container(),
                         Align(
                           alignment: Alignment.center,
-                          child: RoundedButton(
-                            text: "CONFERMA",
-                            onTap: () {
-                              widget.nextStep();
-                            },
-                            enabled: widget.newUserModel.isNotEmpty,
-                          ),
+                          child: widget.loading
+                              ? CircularProgressIndicator()
+                              : RoundedButton(
+                                  text: "CONFERMA",
+                                  onTap: () {
+                                    widget.nextStep();
+                                  },
+                                  enabled: widget.newUserModel.isNotEmpty,
+                                ),
                         ),
                         SizedBox(
                           height: (MediaQuery.of(context).orientation ==

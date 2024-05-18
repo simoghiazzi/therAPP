@@ -10,7 +10,7 @@ class RenderModuleField extends StatefulWidget {
   final dynamic field;
   bool showNote = false;
 
-  RenderModuleField({Key? key, required this.field}) : super(key: key);
+  RenderModuleField({super.key, required this.field});
 
   @override
   _RenderModuleFieldState createState() => _RenderModuleFieldState();
@@ -155,8 +155,9 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
                       });
                     },
                     child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 6.0, horizontal: 12.0),
+                      margin: EdgeInsets.symmetric(vertical: 0.5.h),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 4.h, horizontal: 8.w),
                       decoration: BoxDecoration(
                         color: isSelected ? kPrimaryColor : Colors.white,
                         borderRadius: BorderRadius.circular(15.0),
@@ -168,6 +169,7 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
                       child: Text(
                         option,
                         style: TextStyle(
+                          fontSize: 8.sp,
                           color: isSelected ? Colors.white : Colors.black,
                         ),
                       ),
@@ -250,13 +252,59 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
               title: Text(widget.field['name']),
               showHeader: false,
               selectedChipColor: kPrimaryColor,
-              selectedTextStyle: const TextStyle(color: Colors.white),
+              chipColor:
+                  Colors.grey[200], // Background color for unselected chips
+              textStyle: const TextStyle(
+                fontSize: 16, // Custom text size for unselected chips
+              ),
+              selectedTextStyle: const TextStyle(
+                color: Colors.white,
+                fontSize: 16, // Custom text size for selected chips
+              ),
               decoration: const BoxDecoration(),
               scroll: false,
               onTap: (List<String?>? values) {
                 setState(() {
                   widget.field['values'] = values?.cast<String>() ?? [];
                 });
+              },
+              itemBuilder: (item, state) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 0.5.w,
+                      vertical: 1.h), // Adjust padding as needed
+                  child: ChoiceChip(
+                    label: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 4.w,
+                          vertical: 3.h), // Adjust label padding as needed
+                      child: Text(item.label),
+                    ),
+                    selected: widget.field['values'].contains(item.value),
+                    onSelected: (selected) {
+                      setState(() {
+                        if (selected) {
+                          widget.field['values']?.add(item.value);
+                        } else {
+                          widget.field['values']?.remove(item.value);
+                        }
+                      });
+                    },
+                    selectedColor: kPrimaryColor,
+                    backgroundColor:
+                        Colors.white, // Ensure this matches chipColor
+                    labelStyle: widget.field['values'].contains(item.value)
+                        ? TextStyle(color: Colors.white, fontSize: 8.sp)
+                        : TextStyle(color: Colors.black, fontSize: 8.sp),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                          8.0), // Adjust the radius as needed
+                      side: const BorderSide(
+                        color: kPrimaryColor, // Customize the border color here
+                      ),
+                    ),
+                  ),
+                );
               },
             ),
             widget.showNote
@@ -376,7 +424,43 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
       case 6: //Swipe
         List<Map<String, dynamic>> options =
             List<Map<String, dynamic>>.from(widget.field['options'] ?? []);
-        return OptionsSwipeScreen(options: options);
+        return Column(children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment
+                .center, // Centers the row's children horizontally
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                widget.field['name'],
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 9.sp),
+              ),
+              SizedBox(
+                width:
+                    (MediaQuery.of(context).orientation == Orientation.portrait)
+                        ? 2.h
+                        : 2.h,
+              ),
+              GestureDetector(
+                child: Text(
+                  widget.showNote ? "  -  " : "  +  ",
+                  style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 10.sp),
+                ),
+                onTap: () {
+                  setState(() {
+                    widget.showNote = !widget.showNote;
+                  });
+                },
+              ),
+            ],
+          ),
+          SizedBox(
+            height: (MediaQuery.of(context).orientation == Orientation.portrait)
+                ? 3.h
+                : 2.h,
+          ),
+          OptionsSwipeScreen(options: options)
+        ]);
       default:
         return const Text("DEFAULT");
     }

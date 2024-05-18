@@ -7,11 +7,11 @@ class TinderCard extends StatefulWidget {
   final Function() onReset;
 
   const TinderCard({
-    Key? key,
+    super.key,
     required this.option,
     required this.onSwipe,
     required this.onReset,
-  }) : super(key: key);
+  });
 
   @override
   _TinderCardState createState() => _TinderCardState();
@@ -95,7 +95,7 @@ class _TinderCardState extends State<TinderCard> {
 class OptionsSwipeScreen extends StatelessWidget {
   final List<Map<String, dynamic>> options;
 
-  const OptionsSwipeScreen({Key? key, required this.options}) : super(key: key);
+  const OptionsSwipeScreen({super.key, required this.options});
 
   @override
   Widget build(BuildContext context) {
