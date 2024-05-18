@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:therAPP/views/AllPatients/all_patients_screen.dart';
 import 'package:therAPP/views/Home/home_screen.dart';
 import 'package:therAPP/views/NewPatient/new_patient_screen.dart';
 
@@ -56,6 +57,9 @@ class AppRouterDelegate extends RouterDelegate<List<RouteSettings>>
     switch (routeSettings.name) {
       case NewPatientScreen.route:
         child = const NewPatientScreen();
+        break;
+      case AllPatientsScreen.route:
+        child = const AllPatientsScreen();
         break;
       case HomePageScreen.route:
         child = HomePageScreen(pageIndex: routeSettings.arguments as int?);

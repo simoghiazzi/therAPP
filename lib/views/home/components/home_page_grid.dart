@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:therAPP/Router/app_router_delegate.dart';
+import 'package:therAPP/views/AllPatients/all_patients_screen.dart';
 import 'package:therAPP/views/Home/components/dash_card.dart';
 import 'package:provider/provider.dart';
 import 'package:therAPP/views/NewPatient/new_patient_screen.dart';
@@ -37,12 +38,12 @@ class HomePageGrid extends StatelessWidget {
                   ),
                   // Anonymous Chats
                   DashCard(
-                      row: 1,
-                      imagePath: "assets/icons/list.png",
-                      text: "Lista\npazienti",
-                      onTap: () =>
-                          {} //routerDelegate.pushPage(name: ChatListScreen.route, arguments: AnonymousChatListBody()),
-                      ),
+                    row: 1,
+                    imagePath: "assets/icons/list.png",
+                    text: "Lista\npazienti",
+                    onTap: () =>
+                        routerDelegate.pushPage(name: AllPatientsScreen.route),
+                  ),
                 ]),
               ],
             ),

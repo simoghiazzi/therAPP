@@ -11,7 +11,7 @@ import 'package:therAPP/views/NewPatient/components/new_patient_body.dart';
 class NewPatientScreen extends StatefulWidget {
   static const route = "/NewPatientScreen";
 
-  const NewPatientScreen({Key? key}) : super(key: key);
+  const NewPatientScreen({super.key});
 
   @override
   NewPatientScreenState createState() => NewPatientScreenState();
