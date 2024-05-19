@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as path;
+import 'package:therAPP/views/AllPatients/components/json_content.dart';
 import 'package:therAPP/views/Utils/constants.dart';
 import 'package:therAPP/views/Utils/top_bar.dart';
 
@@ -22,6 +23,9 @@ class DirectoryContentScreen extends StatelessWidget {
         children: [
           TopBar(
             text: path.basename(directory.path),
+            goBack: () {
+              Navigator.pop(context);
+            },
           ),
           Expanded(
             child: ListView.builder(
@@ -61,9 +65,22 @@ class DirectoryContentScreen extends StatelessWidget {
                         Icons.arrow_forward_ios,
                         color: kPrimaryColor, // Adjust as needed
                       ),
-                      onTap: () {
-                        // Handle the tap event if needed
-                        print('Tapped on $fileName');
+                      onTap: () async {
+                        try {
+                          String content =
+                              await jsonFiles[index].readAsString();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => JsonContentScreen(
+                                fileName: fileName,
+                                jsonContent: content,
+                              ),
+                            ),
+                          );
+                        } catch (e) {
+                          print('Failed to read the file: $e');
+                        }
                       },
                     ),
                   ),

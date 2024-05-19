@@ -5,7 +5,6 @@ import 'package:therAPP/views/Utils/custom_sizer.dart';
 import 'package:therAPP/views/Utils/top_bar.dart';
 
 class NewPatientBody extends StatefulWidget {
-  final bool showBack;
   final String barText;
   final List<Map<String, dynamic>> templates;
   final dynamic chosenFile;
@@ -19,7 +18,6 @@ class NewPatientBody extends StatefulWidget {
 
   const NewPatientBody(
       {super.key,
-      this.showBack = true,
       this.barText = "Seleziona modello",
       required this.templates,
       required this.chosenFile,
@@ -68,7 +66,7 @@ class NewPatientBodyState extends State<NewPatientBody> {
       children: [
         TopBar(
           text: widget.barText,
-          back: widget.showBack,
+          back: true,
           goBack: widget.step > 1 ? widget.previousStep : null,
         ),
         Expanded(
