@@ -1,0 +1,1 @@
+ /Users/simoneghiazzi/therAPP/therAPP/.dart_tool/flutter_build/6d79bc80efb4992ef511d09c7581ef06/native_assets.yaml: 

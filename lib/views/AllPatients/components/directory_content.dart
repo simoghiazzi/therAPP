@@ -75,6 +75,7 @@ class DirectoryContentScreen extends StatelessWidget {
                               builder: (context) => JsonContentScreen(
                                 fileName: fileName,
                                 jsonContent: content,
+                                path: directory.path,
                               ),
                             ),
                           );

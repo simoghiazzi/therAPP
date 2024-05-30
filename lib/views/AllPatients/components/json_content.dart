@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:therAPP/utils/render_module_field.dart';
 import 'package:therAPP/views/Home/components/rounded_button.dart';
 import 'dart:convert';
+import 'dart:io';
 import 'package:therAPP/views/Utils/custom_sizer.dart';
 import 'package:therAPP/views/Utils/top_bar.dart';
 
@@ -9,11 +10,13 @@ class JsonContentScreen extends StatefulWidget {
   final String fileName;
   final String jsonContent;
   final IconData modifyIcon;
+  final String path;
 
   const JsonContentScreen({
     super.key,
     required this.fileName,
     required this.jsonContent,
+    required this.path,
     this.modifyIcon = Icons.edit,
   });
 
@@ -32,6 +35,38 @@ class _JsonContentScreenState extends State<JsonContentScreen> {
       });
     } else {
       Navigator.pop(context);
+    }
+  }
+
+  Future<void> _updateJsonFile() async {
+    setState(() {
+      loading = true;
+    });
+
+    // Construct the file path
+    String filePath = '${widget.path}/${widget.fileName}';
+
+    try {
+      // Write the updated JSON content to the file
+      File file = File(filePath);
+      await file.writeAsString(widget.jsonContent);
+
+      // Optionally, show a confirmation message or perform other actions
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Successo!')),
+      );
+
+      // Navigate back to the previous screen
+      Navigator.of(context).pop();
+    } catch (e) {
+      // Handle any errors during the file write operation
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Errore di aggiornamento del file: $e')),
+      );
+    } finally {
+      setState(() {
+        loading = false;
+      });
     }
   }
 
@@ -56,7 +91,9 @@ class _JsonContentScreenState extends State<JsonContentScreen> {
                       child: InkWell(
                         onTap: () {
                           FocusScope.of(context).unfocus();
-                          step += 1;
+                          setState(() {
+                            step += 1;
+                          });
                         },
                         child: Icon(widget.modifyIcon,
                             color: Colors.white, size: 25),
@@ -122,13 +159,10 @@ class _JsonContentScreenState extends State<JsonContentScreen> {
                           Align(
                             alignment: Alignment.center,
                             child: loading
-                                ? CircularProgressIndicator()
+                                ? const CircularProgressIndicator()
                                 : RoundedButton(
                                     text: "CONFERMA",
-                                    onTap: () {
-                                      loading = true;
-                                      // widget.nextStep();
-                                    },
+                                    onTap: _updateJsonFile,
                                   ),
                           ),
                           SizedBox(
