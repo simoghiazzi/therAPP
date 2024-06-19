@@ -19,6 +19,8 @@ class RenderModuleField extends StatefulWidget {
 class _RenderModuleFieldState extends State<RenderModuleField> {
   late TextEditingController controller;
   late TextEditingController notesController;
+  late FocusNode notesFocusNode;
+  ValueNotifier<bool> showNoteNotifier = ValueNotifier(false);
 
   @override
   void initState() {
@@ -29,12 +31,15 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
     notesController = TextEditingController(
       text: widget.field['notes'] ?? '',
     );
+    notesFocusNode = FocusNode();
   }
 
   @override
   void dispose() {
     controller.dispose();
     notesController.dispose();
+    notesFocusNode.dispose();
+    showNoteNotifier.dispose();
     super.dispose();
   }
 
@@ -114,15 +119,26 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
                       : 2.h,
                 ),
                 GestureDetector(
-                  child: Text(
-                    widget.showNote ? "  -  " : "  +  ",
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 10.sp),
+                  child: ValueListenableBuilder<bool>(
+                    valueListenable: showNoteNotifier,
+                    builder: (context, showNote, child) {
+                      return Text(
+                        showNote ? "  -  " : "  +  ",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.sp,
+                        ),
+                      );
+                    },
                   ),
                   onTap: () {
-                    setState(() {
-                      widget.showNote = !widget.showNote;
-                    });
+                    showNoteNotifier.value = !showNoteNotifier.value;
+                    if (showNoteNotifier.value) {
+                      // Request focus when the TextField is shown
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        FocusScope.of(context).requestFocus(notesFocusNode);
+                      });
+                    }
                   },
                 ),
               ],
@@ -178,30 +194,34 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
                 }).toList(),
               ),
             ),
-            widget.showNote
-                ? Column(
-                    children: [
-                      SizedBox(
-                        height: (MediaQuery.of(context).orientation ==
-                                Orientation.portrait)
-                            ? 1.h
-                            : 0.5.h,
-                      ),
-                      TextField(
-                        controller: notesController,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Note',
-                        ),
-                        onChanged: (text) {
-                          setState(() {
-                            widget.field['notes'] = text;
-                          });
-                        },
+            ValueListenableBuilder<bool>(
+              valueListenable: showNoteNotifier,
+              builder: (context, showNote, child) {
+                return showNote
+                    ? Column(
+                        children: [
+                          SizedBox(
+                            height: (MediaQuery.of(context).orientation ==
+                                    Orientation.portrait)
+                                ? 1.h
+                                : 0.5.h,
+                          ),
+                          TextField(
+                            controller: notesController,
+                            focusNode: notesFocusNode,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'Note',
+                            ),
+                            onChanged: (text) {
+                              widget.field['notes'] = text;
+                            },
+                          ),
+                        ],
                       )
-                    ],
-                  )
-                : Container(),
+                    : Container();
+              },
+            ),
             SizedBox(
               height:
                   (MediaQuery.of(context).orientation == Orientation.portrait)
@@ -230,15 +250,26 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
                       : 2.h,
                 ),
                 GestureDetector(
-                  child: Text(
-                    widget.showNote ? "  -  " : "  +  ",
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 10.sp),
+                  child: ValueListenableBuilder<bool>(
+                    valueListenable: showNoteNotifier,
+                    builder: (context, showNote, child) {
+                      return Text(
+                        showNote ? "  -  " : "  +  ",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10.sp,
+                        ),
+                      );
+                    },
                   ),
                   onTap: () {
-                    setState(() {
-                      widget.showNote = !widget.showNote;
-                    });
+                    showNoteNotifier.value = !showNoteNotifier.value;
+                    if (showNoteNotifier.value) {
+                      // Request focus when the TextField is shown
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        FocusScope.of(context).requestFocus(notesFocusNode);
+                      });
+                    }
                   },
                 ),
               ],
@@ -281,12 +312,12 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
                       child: Text(item.label),
                     ),
                     selected: widget.field['values'].contains(item.value),
-                    onSelected: (selected) {
+                    onSelected: (bool selected) {
                       setState(() {
                         if (selected) {
-                          widget.field['values']?.add(item.value);
+                          widget.field['values'].add(item.value);
                         } else {
-                          widget.field['values']?.remove(item.value);
+                          widget.field['values'].remove(item.value);
                         }
                       });
                     },
@@ -307,33 +338,39 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
                 );
               },
             ),
-            widget.showNote
-                ? Column(children: [
-                    SizedBox(
-                      height: (MediaQuery.of(context).orientation ==
-                              Orientation.portrait)
-                          ? 1.h
-                          : 0.5.h,
-                    ),
-                    TextField(
-                      controller: notesController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Note',
-                      ),
-                      onChanged: (text) {
-                        setState(() {
-                          widget.field['notes'] = text;
-                        });
-                      },
-                    )
-                  ])
-                : Container(),
+            ValueListenableBuilder<bool>(
+              valueListenable: showNoteNotifier,
+              builder: (context, showNote, child) {
+                return showNote
+                    ? Column(
+                        children: [
+                          SizedBox(
+                            height: (MediaQuery.of(context).orientation ==
+                                    Orientation.portrait)
+                                ? 1.h
+                                : 0.5.h,
+                          ),
+                          TextField(
+                            controller: notesController,
+                            focusNode: notesFocusNode,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'Note',
+                            ),
+                            onChanged: (text) {
+                              widget.field['notes'] = text;
+                            },
+                          ),
+                        ],
+                      )
+                    : Container();
+              },
+            ),
             SizedBox(
               height:
                   (MediaQuery.of(context).orientation == Orientation.portrait)
-                      ? 5.h
-                      : 4.h,
+                      ? 4.h
+                      : 3.h,
             ),
           ],
         );
@@ -462,7 +499,7 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
           OptionsSwipeScreen(options: options)
         ]);
       default:
-        return const Text("DEFAULT");
+        return const Text("");
     }
   }
 }
