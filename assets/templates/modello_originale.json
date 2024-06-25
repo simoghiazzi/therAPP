@@ -120,7 +120,7 @@
   "Anamnesi remota": [
     {
       "name": "Trauma",
-      "type": 3,
+      "type": 4,
       "options": [
         "Osseo",
         "Articolare",
@@ -133,7 +133,7 @@
     },
     {
       "name": "Operazione",
-      "type": 3,
+      "type": 4,
       "options": [
         "Ortopedica",
         "Cardio-vascolare",
@@ -267,33 +267,27 @@
   ],
   "Osservazione": [
     {
-      "name": "Red Flags",
+      "name": "Ortostatismo",
       "type": 4,
       "options": [
-        "Storia di cancro",
-        "Immunosoppressione",
-        "Dolore notturno",
-        "Over 50",
-        "Utilizzo prolungato corticosteroidi",
-        "Deficit neurologico severo e progressivo",
-        "Dolore toracico",
-        "Perdita di peso immotivata",
-        "Anestesia a sella",
-        "Disturbi sfinterici",
-        "Dolore associato a sintomi costituzionali",
-        "Febbre",
-        "Disturbi visivi",
-        "Atassia",
-        "Alterazione della deambulazione"
+        "Capo",
+        "Cervicale",
+        "Dorsale",
+        "Lombare",
+        "Bacino",
+        "Femore",
+        "Tibia-perone",
+        "Piede",
+        "Omero",
+        "Radio-ulna",
+        "Petto",
+        "Addome",
+        "Mano",
+        "Altro"
       ]
-    },
-    {
-      "name": "Psicologo",
-      "type": 3,
-      "options": ["Si", "No"]
     }
   ],
-  "Esaminazione": [
+  "Test": [
     {
       "name": "Mobilità Colonna",
       "type": 6,
@@ -311,7 +305,6 @@
         { "name": "Oculare", "slides": ["Si", "No"] },
         { "name": "Vestibolare", "slides": ["Si", "No"] },
         { "name": "Overhead squat", "slides": ["Si", "No"] },
-        { "name": "Test specifico", "slides": ["Si", "No"] },
         { "name": "Respirazione", "slides": ["Si", "No"] }
       ]
     },
@@ -329,7 +322,7 @@
     },
     {
       "name": "Cammino",
-      "type": 3,
+      "type": 4,
       "options": [
         "Capo",
         "Cervicale",
@@ -349,7 +342,7 @@
     },
     {
       "name": "Esame Neurologico",
-      "type": 3,
+      "type": 4,
       "options": [
         "Capo",
         "Cervicale",

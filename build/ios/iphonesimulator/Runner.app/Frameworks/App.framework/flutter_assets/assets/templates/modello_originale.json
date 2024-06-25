@@ -43,12 +43,12 @@
         "Un mese",
         "3 Mesi",
         "6 Mesi",
-        "Altro"
+        "Più di 6 mesi"
       ]
     },
     {
       "name": "Caratteristiche",
-      "type": 3,
+      "type": 4,
       "options": [
         "Urente",
         "Scossa",
@@ -60,13 +60,42 @@
     },
     {
       "name": "Irradiazione",
-      "type": 3,
-      "options": ["Si", "No"]
+      "type": 4,
+      "options": [
+        "Capo",
+        "Cervicale",
+        "Dorsale",
+        "Lombare",
+        "Bacino",
+        "Femore",
+        "Tibia-perone",
+        "Piede",
+        "Omero",
+        "Radio-ulna",
+        "Petto",
+        "Addome",
+        "Mano",
+        "Altro"
+      ]
     },
     {
       "name": "Timing",
-      "type": 3,
+      "type": 4,
       "options": ["Mattina", "Sera", "Notte", "Costante", "Incostante"]
+    },
+    {
+      "name": "Fattori aggravanti",
+      "type": 4,
+      "options": [
+        "Riposo",
+        "Postura",
+        "Farmaco",
+        "Trattamento",
+        "Attività",
+        "Clima",
+        "Temperatura",
+        "Altro"
+      ]
     },
     {
       "name": "Fattori allevianti",
@@ -85,7 +114,7 @@
     {
       "name": "Severità",
       "type": 5,
-      "options": [1, 10]
+      "options": [0, 10]
     }
   ],
   "Anamnesi remota": [
@@ -111,6 +140,7 @@
         "Neurologica",
         "Viscerale",
         "Parto",
+        "Aritmia",
         "Altro"
       ]
     },
@@ -137,7 +167,17 @@
     {
       "name": "Pneumo",
       "type": 4,
-      "options": ["BPCO", "Asma", "OSAS", "Insufficienza", "Embolia", "Altro"]
+      "options": [
+        "BPCO",
+        "Asma",
+        "OSAS",
+        "Insufficienza",
+        "Embolia",
+        "Chirurgie",
+        "Polmonite",
+        "COVID",
+        "Altro"
+      ]
     },
     {
       "name": "Gastro",
@@ -152,6 +192,8 @@
         "Epatite",
         "Appendicite",
         "Chron",
+        "Chirurgie",
+        "Diarrea",
         "Altro"
       ]
     },
@@ -164,6 +206,7 @@
         "Endometriosi",
         "Disturbi renali",
         "Incontinenza",
+        "Chirurgie",
         "Altro"
       ]
     },
@@ -174,23 +217,24 @@
         "Deficit simmetrico",
         "Deficit asimmetrico",
         "Occhiali",
+        "Chirurgie",
         "Altro"
       ]
     },
     {
       "name": "Bocca",
-      "type": 3,
-      "options": ["Apparecchio", "ATM", "Bruxismo", "Altro"]
+      "type": 4,
+      "options": ["Apparecchio", "ATM", "Bruxismo", "Chirurgie", "Altro"]
     },
     {
       "name": "Sonno",
       "type": 5,
-      "options": [1, 10]
+      "options": [0, 10]
     },
     {
       "name": "Attività fisica - Giorni",
       "type": 5,
-      "options": [1, 7]
+      "options": [0, 7]
     }
   ],
   "Criticità": [
@@ -223,33 +267,27 @@
   ],
   "Osservazione": [
     {
-      "name": "Red Flags",
+      "name": "Ortostatismo",
       "type": 4,
       "options": [
-        "Storia di cancro",
-        "Immunosoppressione",
-        "Dolore notturno",
-        "Over 50",
-        "Utilizzo prolungato corticosteroidi",
-        "Deficit neurologico severo e progressivo",
-        "Dolore toracico",
-        "Perdita di peso immotivata",
-        "Anestesia a sella",
-        "Disturbi sfinterici",
-        "Dolore associato a sintomi costituzionali",
-        "Febbre",
-        "Disturbi visivi",
-        "Atassia",
-        "Alterazione della deambulazione"
+        "Capo",
+        "Cervicale",
+        "Dorsale",
+        "Lombare",
+        "Bacino",
+        "Femore",
+        "Tibia-perone",
+        "Piede",
+        "Omero",
+        "Radio-ulna",
+        "Petto",
+        "Addome",
+        "Mano",
+        "Altro"
       ]
-    },
-    {
-      "name": "Psicologo",
-      "type": 3,
-      "options": ["Si", "No"]
     }
   ],
-  "Esaminazione": [
+  "Test": [
     {
       "name": "Mobilità Colonna",
       "type": 6,
@@ -267,7 +305,6 @@
         { "name": "Oculare", "slides": ["Si", "No"] },
         { "name": "Vestibolare", "slides": ["Si", "No"] },
         { "name": "Overhead squat", "slides": ["Si", "No"] },
-        { "name": "Test specifico", "slides": ["Si", "No"] },
         { "name": "Respirazione", "slides": ["Si", "No"] }
       ]
     },
@@ -285,7 +322,7 @@
     },
     {
       "name": "Cammino",
-      "type": 3,
+      "type": 4,
       "options": [
         "Capo",
         "Cervicale",
@@ -305,7 +342,7 @@
     },
     {
       "name": "Esame Neurologico",
-      "type": 3,
+      "type": 4,
       "options": [
         "Capo",
         "Cervicale",

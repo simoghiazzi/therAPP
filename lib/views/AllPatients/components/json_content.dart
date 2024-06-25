@@ -49,11 +49,16 @@ class _JsonContentScreenState extends State<JsonContentScreen> {
     try {
       // Write the updated JSON content to the file
       File file = File(filePath);
-      await file.writeAsString(widget.jsonContent);
+
+      // Convert the jsonContent to a properly formatted JSON string
+      String formattedJsonContent =
+          json.encode(json.decode(widget.jsonContent));
+
+      await file.writeAsString(formattedJsonContent);
 
       // Optionally, show a confirmation message or perform other actions
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Successo!')),
+        const SnackBar(content: Text('Successo!')),
       );
 
       // Navigate back to the previous screen

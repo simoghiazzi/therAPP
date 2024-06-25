@@ -60,10 +60,10 @@ class AllPatientsBodyState extends State<AllPatientsBody> {
                           ),
                           title: Text(
                             dirName,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold,
-                              color: Colors.blue[900],
+                              color: kPrimaryColor,
                             ),
                           ),
                           trailing: const Icon(

@@ -20,6 +20,7 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
   late TextEditingController controller;
   late TextEditingController notesController;
   late FocusNode notesFocusNode;
+  late FocusNode numberFocusNode;
   ValueNotifier<bool> showNoteNotifier = ValueNotifier(false);
 
   @override
@@ -32,6 +33,7 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
       text: widget.field['notes'] ?? '',
     );
     notesFocusNode = FocusNode();
+    numberFocusNode = FocusNode();
   }
 
   @override
@@ -39,6 +41,7 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
     controller.dispose();
     notesController.dispose();
     notesFocusNode.dispose();
+    numberFocusNode.dispose();
     showNoteNotifier.dispose();
     super.dispose();
   }
@@ -46,7 +49,7 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
   @override
   Widget build(BuildContext context) {
     switch (widget.field['type']) {
-      case 1: //TextField
+      case 1: // TextField
         return Column(
           children: [
             TextField(
@@ -60,6 +63,9 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
                   widget.field['value'] = text;
                 });
               },
+              onSubmitted: (value) {
+                FocusScope.of(context).unfocus();
+              },
             ),
             SizedBox(
               height:
@@ -69,11 +75,12 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
             ),
           ],
         );
-      case 2: //TextField only NUMBERS
+      case 2: // TextField only NUMBERS
         return Column(
           children: [
             TextField(
               controller: controller,
+              focusNode: numberFocusNode,
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
                 labelText: widget.field['name'],
@@ -87,6 +94,9 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
               inputFormatters: <TextInputFormatter>[
                 FilteringTextInputFormatter.digitsOnly,
               ],
+              onSubmitted: (value) {
+                FocusScope.of(context).unfocus();
+              },
             ),
             SizedBox(
               height:
@@ -96,7 +106,7 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
             ),
           ],
         );
-      case 3: //Single selection
+      case 3: // Single selection
         List<String> options = List<String>.from(widget.field['options'] ?? []);
         String? selectedOption = widget.field['values']?.isNotEmpty == true
             ? widget.field['values']![0]
@@ -216,6 +226,9 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
                             onChanged: (text) {
                               widget.field['notes'] = text;
                             },
+                            onSubmitted: (value) {
+                              FocusScope.of(context).unfocus();
+                            },
                           ),
                         ],
                       )
@@ -231,12 +244,11 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
           ],
         );
 
-      case 4: //Multiple Selection
+      case 4: // Multiple Selection
         return Column(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment
-                  .center, // Centers the row's children horizontally
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
@@ -329,7 +341,7 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
                         : TextStyle(color: Colors.black, fontSize: 8.sp),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
-                          8.0), // Adjust the radius as needed
+                          15.0), // Adjust the radius as needed
                       side: const BorderSide(
                         color: kPrimaryColor, // Customize the border color here
                       ),
@@ -359,6 +371,9 @@ class _RenderModuleFieldState extends State<RenderModuleField> {
                             ),
                             onChanged: (text) {
                               widget.field['notes'] = text;
+                            },
+                            onSubmitted: (value) {
+                              FocusScope.of(context).unfocus();
                             },
                           ),
                         ],
