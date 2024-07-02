@@ -48,7 +48,7 @@
                             <menuItem title="Hide Others" keyEquivalent="h" id="Vdr-fp-XzO">
                                 <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 <connections>
-                                    <action selector="hideOtherApplications:" target="-1" id="VT4-aY-XCT"/>
+                                    <action selector="hideOANAMNEASYlications:" target="-1" id="VT4-aY-XCT"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Show All" id="Kd2-mp-pUS">

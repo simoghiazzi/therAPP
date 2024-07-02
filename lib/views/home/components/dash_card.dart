@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:therAPP/Views/Utils/constants.dart';
+import 'package:ANAMNEASY/Views/Utils/constants.dart';
 import 'package:sizer/sizer.dart';
 
 /// Card that composes the [HomePageGrid].

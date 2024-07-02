@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as path;
-import 'package:therAPP/views/AllPatients/components/json_content.dart';
-import 'package:therAPP/views/Utils/constants.dart';
-import 'package:therAPP/views/Utils/top_bar.dart';
+import 'package:ANAMNEASY/views/AllPatients/components/json_content.dart';
+import 'package:ANAMNEASY/views/Utils/constants.dart';
+import 'package:ANAMNEASY/views/Utils/top_bar.dart';
 
 class DirectoryContentScreen extends StatelessWidget {
   final Directory directory;

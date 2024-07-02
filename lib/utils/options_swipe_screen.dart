@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:therAPP/views/Utils/custom_sizer.dart';
+import 'package:ANAMNEASY/views/Utils/custom_sizer.dart';
 
 class TinderCard extends StatefulWidget {
   final Map<String, dynamic> option;

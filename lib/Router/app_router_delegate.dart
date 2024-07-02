@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:therAPP/views/AllPatients/all_patients_screen.dart';
-import 'package:therAPP/views/Home/home_screen.dart';
-import 'package:therAPP/views/NewPatient/new_patient_screen.dart';
+import 'package:ANAMNEASY/views/AllPatients/all_patients_screen.dart';
+import 'package:ANAMNEASY/views/Home/home_screen.dart';
+import 'package:ANAMNEASY/views/NewPatient/new_patient_screen.dart';
 
 class AppRouterDelegate extends RouterDelegate<List<RouteSettings>>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin<List<RouteSettings>> {

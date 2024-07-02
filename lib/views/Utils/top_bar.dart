@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:therAPP/Views/Utils/custom_sizer.dart';
-import 'package:therAPP/Views/Utils/constants.dart';
-import 'package:therAPP/Router/app_router_delegate.dart';
+import 'package:ANAMNEASY/Views/Utils/custom_sizer.dart';
+import 'package:ANAMNEASY/Views/Utils/constants.dart';
+import 'package:ANAMNEASY/Router/app_router_delegate.dart';
 
 class TopBar extends StatelessWidget {
   final String text;

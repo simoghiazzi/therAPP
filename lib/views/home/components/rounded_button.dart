@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:therAPP/views/Utils/constants.dart';
-import 'package:therAPP/views/Utils/custom_sizer.dart';
+import 'package:ANAMNEASY/views/Utils/constants.dart';
+import 'package:ANAMNEASY/views/Utils/custom_sizer.dart';
 
 /// Button component used in the entire application.
 ///

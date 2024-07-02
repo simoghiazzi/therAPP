@@ -1,15 +1,15 @@
-import 'package:therAPP/views/Home/home_screen.dart';
+import 'package:ANAMNEASY/views/Home/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:therAPP/Views/Utils/constants.dart';
-import 'package:therAPP/Router/app_router_delegate.dart';
+import 'package:ANAMNEASY/Views/Utils/constants.dart';
+import 'package:ANAMNEASY/Router/app_router_delegate.dart';
 
-/// therAPP project author: @simoneghiazzi
+/// ANAMNEASY project author: @simoneghiazzi
 ///
 /// Copyright 2024. All rights reserved.
-/// The therAPP authors.
+/// The ANAMNEASY authors.
 
 void main() {
   // Flutter initialization
@@ -57,7 +57,7 @@ class MyAppState extends State<MyApp> {
 
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: "therAPP",
+            title: "ANAMNEASY",
             theme: ThemeData(
               primaryColor: kPrimaryColor,
               scaffoldBackgroundColor: Colors.white,

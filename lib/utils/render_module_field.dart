@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
-import 'package:therAPP/utils/options_swipe_screen.dart';
-import 'package:therAPP/views/Utils/constants.dart';
-import 'package:therAPP/views/Utils/custom_sizer.dart';
+import 'package:ANAMNEASY/utils/options_swipe_screen.dart';
+import 'package:ANAMNEASY/views/Utils/constants.dart';
+import 'package:ANAMNEASY/views/Utils/custom_sizer.dart';
 
 // ignore: must_be_immutable
 class RenderModuleField extends StatefulWidget {

@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:therAPP/views/AllPatients/components/directory_content.dart';
-import 'package:therAPP/views/Utils/constants.dart';
-import 'package:therAPP/views/Utils/custom_sizer.dart';
-import 'package:therAPP/views/Utils/top_bar.dart';
+import 'package:ANAMNEASY/views/AllPatients/components/directory_content.dart';
+import 'package:ANAMNEASY/views/Utils/constants.dart';
+import 'package:ANAMNEASY/views/Utils/custom_sizer.dart';
+import 'package:ANAMNEASY/views/Utils/top_bar.dart';
 import 'package:path/path.dart' as path;
 
 class AllPatientsBody extends StatefulWidget {

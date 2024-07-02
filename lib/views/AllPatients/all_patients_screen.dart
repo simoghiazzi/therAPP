@@ -3,7 +3,7 @@ import 'package:path/path.dart' as path;
 import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
-import 'package:therAPP/views/AllPatients/components/all_patients_body.dart';
+import 'package:ANAMNEASY/views/AllPatients/components/all_patients_body.dart';
 
 Future<List<Directory>> listDirectories(String path) async {
   Directory directory = Directory(path);

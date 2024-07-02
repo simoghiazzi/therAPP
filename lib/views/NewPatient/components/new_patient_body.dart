@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:therAPP/utils/render_module_field.dart';
-import 'package:therAPP/views/Home/components/rounded_button.dart';
-import 'package:therAPP/views/Utils/custom_sizer.dart';
-import 'package:therAPP/views/Utils/top_bar.dart';
+import 'package:ANAMNEASY/utils/render_module_field.dart';
+import 'package:ANAMNEASY/views/Home/components/rounded_button.dart';
+import 'package:ANAMNEASY/views/Utils/custom_sizer.dart';
+import 'package:ANAMNEASY/views/Utils/top_bar.dart';
 
 class NewPatientBody extends StatefulWidget {
   final String barText;

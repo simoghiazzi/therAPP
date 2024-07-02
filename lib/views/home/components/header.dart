@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:therAPP/Views/Utils/constants.dart';
+import 'package:ANAMNEASY/Views/Utils/constants.dart';
 import 'package:sizer/sizer.dart';
 
 /// Header of the application.
@@ -26,7 +26,7 @@ class Header extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 5.0.w),
                   child: Text(
-                    "therAPP",
+                    "ANAMNEASY",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.white,

@@ -368,13 +368,13 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "therAPP",
+      "name": "ANAMNEASY",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     }
   ],
-  "generated": "2024-07-02T12:24:14.846552Z",
+  "generated": "2024-07-02T13:27:19.677264Z",
   "generator": "pub",
   "generatorVersion": "3.4.0",
   "flutterRoot": "file:///Users/simoneghiazzi/development/flutter",

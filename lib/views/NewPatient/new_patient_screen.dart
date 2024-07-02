@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
-import 'package:therAPP/utils/json_file_manager.dart';
+import 'package:ANAMNEASY/utils/json_file_manager.dart';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:therAPP/views/NewPatient/components/new_patient_body.dart';
+import 'package:ANAMNEASY/views/NewPatient/components/new_patient_body.dart';
 
 class NewPatientScreen extends StatefulWidget {
   static const route = "/NewPatientScreen";
